@@ -27,4 +27,4 @@ time: $(TIMES)
 
 .PHONY: clean
 clean:
-	rm -fv $(GCODES) $(SCADS:.scad=.stl)
+	rm -fv $(GCODES) $(SCADS:.scad=.stl) $(TIMES)
