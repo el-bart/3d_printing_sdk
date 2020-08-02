@@ -4,16 +4,17 @@ SCADS  := $(wildcard *.scad)
 STLS   := $(wildcard *.stl) $(SCADS:.scad=.stl)
 STLS   := $(sort $(STLS))  # remove duplicates
 GCODES := $(STLS:.stl=.gcode)
+MD5S   := $(GCODES:.gcode=.gcode.md5)
 TIMES  := $(GCODES:.gcode=.time)
 CONFIG := $(wildcard *.ini)
 
 .PHONY: all
-all: time gcode
+all: time gcode md5
 
 .PHONY: gcode
-gcode: $(GCODES)
+gcode: $(GCODES) $(MD5S)
 
-$(STLS) $(SCADS) $(GCODES) $(TIMES): Makefile $(CONFIG)
+$(STLS) $(SCADS) $(GCODES) $(MD5S) $(TIMES): Makefile $(CONFIG)
 
 %.gcode: %.stl
 	slic3r --load "$(CONFIG)" "$<"
@@ -28,6 +29,16 @@ time: $(TIMES)
 %.time: %.gcode
 	TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv -v "$$TMP" "$@" || { rm -fv "$$TMP" ; false ; }
 
+.PHONY: md5
+md5: $(MD5S)
+
+%.gcode.md5 : %.gcode
+	TMP=$(shell mktemp) ; md5sum "$<" > "$$TMP" 2>&1 && mv -v "$$TMP" "$@" || { rm -fv "$$TMP" ; false ; }
+
+.PHONY: md5_check
+md5_check: | $(MD5S)
+	cat $(MD5S) | md5sum -c
+
 .PHONY: clean
 clean:
-	rm -fv $(GCODES) $(SCADS:.scad=.stl) $(TIMES)
+	rm -fv $(GCODES) $(SCADS:.scad=.stl) $(TIMES) $(MD5S)
