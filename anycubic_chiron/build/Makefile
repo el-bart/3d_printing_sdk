@@ -14,9 +14,9 @@ all: time gcode md5
 .PHONY: gcode
 gcode: $(GCODES) $(MD5S)
 
-$(STLS) $(SCADS) $(GCODES) $(MD5S) $(TIMES): Makefile $(CONFIG)
+$(STLS) $(SCADS) $(GCODES) $(MD5S) $(TIMES): Makefile
 
-%.gcode: %.stl
+%.gcode: %.stl $(CONFIG)
 	slic3r --load "$(CONFIG)" "$<"
 
 %.stl: %.scad
