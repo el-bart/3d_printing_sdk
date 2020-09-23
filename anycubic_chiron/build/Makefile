@@ -25,13 +25,15 @@ TIMES  := $(GCODES:.gcode=.time)
 
 
 build/$(FILAMENT)/config.ini: config/$(FILAMENT).ini Makefile
+	@echo "CONFIG $(FILAMENT)"
 	@mkdir -p "build/$(FILAMENT)"
 	@# TODO...
-	cp -v "$<" "$@"
+	@cp "$<" "$@"
 
 build/%.stl: %.stl Makefile
+	@echo "COPY $<"
 	@mkdir -p "build"
-	cp -v "$<" "$@"
+	@cp "$<" "$@"
 
 
 .PHONY: gcode
