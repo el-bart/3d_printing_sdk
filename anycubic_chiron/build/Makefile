@@ -64,9 +64,7 @@ md5_check: | $(MD5S)
 	cat $(MD5S) | md5sum -c
 
 
-else # $(FILAMENT) set
-$(error "$$(FILAMENT) is not set")
-endif
+endif # $(FILAMENT) set
 
 
 .PHONY: clean
