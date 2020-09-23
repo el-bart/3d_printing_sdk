@@ -1,2 +1,0 @@
-* optional config.mk with extra flags / options
-* config_init.patch for overriding certain settings, for a given project (implies config template)
