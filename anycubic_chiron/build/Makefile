@@ -1,5 +1,15 @@
 .SECONDARY:
 
+.PHONY: all
+all: pla petg
+
+.PHONY: pla petg
+pla petg:
+	$(MAKE) FILAMENT=$@ time gcode md5
+
+
+ifneq (,$(FILAMENT))
+
 SCADS := $(wildcard *.scad)
 
 STLS_REPO := $(addprefix build/, $(wildcard *.stl))
@@ -12,13 +22,6 @@ GCODES := $(STLS_FILAMENT:.stl=.gcode)
 MD5S   := $(GCODES:.gcode=.gcode.md5)
 TIMES  := $(GCODES:.gcode=.time)
 
-
-.PHONY: all
-all: pla petg
-
-.PHONY: pla petg
-pla petg:
-	$(MAKE) FILAMENT=$@ time gcode md5
 
 
 build/$(FILAMENT)/config.ini: config/$(FILAMENT).ini Makefile
@@ -59,6 +62,11 @@ md5: $(MD5S)
 .PHONY: md5_check
 md5_check: | $(MD5S)
 	cat $(MD5S) | md5sum -c
+
+
+else # $(FILAMENT) set
+$(error "$$(FILAMENT) is not set")
+endif
 
 
 .PHONY: clean
