@@ -5,7 +5,7 @@ all: pla petg
 
 .PHONY: pla petg
 pla petg:
-	$(MAKE) FILAMENT=$@ time gcode md5
+	@$(MAKE) FILAMENT=$@ time gcode md5
 
 
 ifneq (,$(FILAMENT))
@@ -25,12 +25,12 @@ TIMES  := $(GCODES:.gcode=.time)
 
 
 build/$(FILAMENT)/config.ini: config/$(FILAMENT).ini Makefile
-	mkdir -p "build/$(FILAMENT)"
+	@mkdir -p "build/$(FILAMENT)"
 	@# TODO...
 	cp -v "$<" "$@"
 
 build/%.stl: %.stl Makefile
-	mkdir -p "build"
+	@mkdir -p "build"
 	cp -v "$<" "$@"
 
 
@@ -38,30 +38,34 @@ build/%.stl: %.stl Makefile
 gcode: $(GCODES) $(MD5S)
 
 build/$(FILAMENT)/%.gcode: build/%.stl build/$(FILAMENT)/config.ini Makefile
-	slic3r --load "build/$(FILAMENT)/config.ini" --output "$@" "$<"
+	@echo "SLIC3R $(notdir $<)"
+	@slic3r --load "build/$(FILAMENT)/config.ini" --output "$@" "$<" > "$@.log"
 
 build/%.stl: %.scad Makefile
-	mkdir -p "build"
-	openscad -o "$@" "$<"
+	@echo "OPENSCAD $<"
+	@mkdir -p "build"
+	@openscad -o "$@" "$<" > "$@.log"
 
 
 .PHONY: time
 time: $(TIMES)
-	head -100 $(TIMES)
+	@head -100 $(TIMES)
 
 %.time: %.gcode
-	TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv -v "$$TMP" "$@" || { rm -fv "$$TMP" ; false ; }
+	@echo "TIMING $(notdir $<)"
+	@TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
 
 
 .PHONY: md5
 md5: $(MD5S)
 
 %.gcode.md5 : %.gcode
-	TMP=$(shell mktemp) ; md5sum "$<" > "$$TMP" 2>&1 && mv -v "$$TMP" "$@" || { rm -fv "$$TMP" ; false ; }
+	@echo "MD5 $(notdir $<)"
+	@TMP=$(shell mktemp) ; md5sum "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
 
 .PHONY: md5_check
 md5_check: | $(MD5S)
-	cat $(MD5S) | md5sum -c
+	@cat $(MD5S) | md5sum -c
 
 
 endif # $(FILAMENT) set
@@ -69,4 +73,4 @@ endif # $(FILAMENT) set
 
 .PHONY: clean
 clean:
-	rm -rfv "build"
+	@rm -rfv "build"
