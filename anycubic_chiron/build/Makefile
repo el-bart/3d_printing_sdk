@@ -30,7 +30,7 @@ MD5S   := $(GCODES:.gcode=.gcode.md5)
 TIMES  := $(GCODES:.gcode=.time)
 
 
-config/$(FILAMENT)/patch.ini: Makefile
+config/$(FILAMENT)/patch.ini:
 	$(SILENT)echo "CREATE $(FILAMENT)/patch.ini"
 	$(SILENT)touch "$@"
 
