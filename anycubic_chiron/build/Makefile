@@ -62,7 +62,7 @@ build/%.stl: %.scad Makefile
 
 .PHONY: time
 time: $(TIMES)
-	$(SILENT)[ -z "$(TIMES)"] || head -100 $(TIMES)
+	$(SILENT)[ -z "$(TIMES)" ] || head -100 $(TIMES)
 
 %.time: %.gcode
 	$(SILENT)echo "TIMING $(FILAMENT)/$(notdir $<)"
