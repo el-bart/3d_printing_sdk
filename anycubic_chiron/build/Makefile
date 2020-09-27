@@ -1,13 +1,5 @@
 .SECONDARY:
 
-.PHONY: all
-all: pla petg
-
-.PHONY: pla petg
-pla petg:
-	@$(MAKE) FILAMENT=$@ time gcode md5
-
-
 ifeq ($(VERBOSE),1)
 SILENT:=
 else
@@ -15,14 +7,33 @@ SILENT:=@
 endif
 
 
-ifneq (,$(FILAMENT))
-
 SCADS := $(wildcard *.scad)
-
 STLS_REPO := $(addprefix build/, $(wildcard *.stl))
 STLS_GEN  := $(addprefix build/, $(SCADS:.scad=.stl))
 STLS := $(STLS_REPO) $(STLS_GEN)
 STLS := $(sort $(STLS))  # remove duplicates
+
+
+.PHONY: all
+all: pla petg
+
+.PHONY: pla petg
+pla petg: $(STLS)
+	$(SILENT)+$(MAKE) FILAMENT=$@ time gcode md5
+
+build/%.stl: %.scad Makefile
+	$(SILENT)echo "OPENSCAD $<"
+	$(SILENT)mkdir -p "build"
+	$(SILENT)openscad -o "$@" "$<" > "$@.log"
+
+build/%.stl: %.stl Makefile
+	$(SILENT)echo "COPY $<"
+	$(SILENT)mkdir -p "build"
+	$(SILENT)cp "$<" "$@"
+
+
+ifneq (,$(FILAMENT))
+
 STLS_FILAMENT := $(join $(addsuffix $(FILAMENT)/, $(dir $(STLS))), $(notdir $(STLS)) )
 
 GCODES := $(STLS_FILAMENT:.stl=.gcode)
@@ -41,11 +52,6 @@ build/$(FILAMENT)/config.ini: config/$(FILAMENT)/template.ini config/$(FILAMENT)
 	$(SILENT)grep -v -f "$@.grep" "$<" > "$@.short"
 	$(SILENT)cat "$@.short" "config/$(FILAMENT)/patch.ini" > "$@"
 
-build/%.stl: %.stl Makefile
-	$(SILENT)echo "COPY $<"
-	$(SILENT)mkdir -p "build"
-	$(SILENT)cp "$<" "$@"
-
 
 .PHONY: gcode
 gcode: $(GCODES) $(MD5S)
@@ -53,11 +59,6 @@ gcode: $(GCODES) $(MD5S)
 build/$(FILAMENT)/%.gcode: build/%.stl build/$(FILAMENT)/config.ini Makefile
 	$(SILENT)echo "SLIC3R $(FILAMENT)/$(notdir $<)"
 	$(SILENT)slic3r --load "build/$(FILAMENT)/config.ini" --output "$@" "$<" > "$@.log"
-
-build/%.stl: %.scad Makefile
-	$(SILENT)echo "OPENSCAD $<"
-	$(SILENT)mkdir -p "build"
-	$(SILENT)openscad -o "$@" "$<" > "$@.log"
 
 
 .PHONY: time
