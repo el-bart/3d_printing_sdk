@@ -23,6 +23,7 @@ just renamed these to `patch.ini` and you're good to go.
 * can print on glass/mirror, but watch out - can stick just too well...
 * add some extra space (around +0.05mm extra) compared to PLA (my OZ is -16.70mm, thus +0.1mm!)
 * bed does not need to be super clean (use IPA with care)
+* use a mixture of water with a drop of dishwashing soap to "paint" the glass surface (minimizes PET-G stickiness to the reasonable value)
 * if parts of the print remain on bed use acetone to dissolve and clean these off
 
 
