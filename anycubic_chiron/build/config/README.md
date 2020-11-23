@@ -26,6 +26,9 @@ just renamed these to `patch.ini` and you're good to go.
 * use a mixture of water with a drop of dishwashing soap to "paint" the glass surface (minimizes PET-G stickiness to the reasonable value)
 * if parts of the print remain on bed use acetone to dissolve and clean these off
 * [PET-G chemical resistance datasheet](http://kmac-plastics.net/data/chemical/petg-chemical.htm)
+* absorbs moisture from the air, that breaks print quality and strength - address:
+  - dry in oven in 50-60*C when unpacked (even new one!) for a couple of hours
+  - keep in a moisture-absorbing box at all times (also during printing)
 
 
 ## ABS
