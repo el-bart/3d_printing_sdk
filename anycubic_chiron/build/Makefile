@@ -12,6 +12,7 @@ STLS_REPO := $(addprefix build/, $(wildcard *.stl))
 STLS_GEN  := $(addprefix build/, $(SCADS:.scad=.stl))
 STLS := $(STLS_REPO) $(STLS_GEN)
 STLS := $(sort $(STLS))  # remove duplicates
+DEPS := $(STLS_GEN:.stl=.stl.d)
 
 
 .PHONY: all
@@ -24,12 +25,14 @@ pla petg: $(STLS)
 build/%.stl: %.scad Makefile
 	$(SILENT)echo "OPENSCAD $<"
 	$(SILENT)mkdir -p "build"
-	$(SILENT)openscad -o "$@" "$<" > "$@.log"
+	$(SILENT)openscad -o "$@" -d "$@.d" "$<" > "$@.log"
 
 build/%.stl: %.stl Makefile
 	$(SILENT)echo "COPY $<"
 	$(SILENT)mkdir -p "build"
 	$(SILENT)cp "$<" "$@"
+
+-include $(DEPS)
 
 
 ifneq (,$(FILAMENT))
