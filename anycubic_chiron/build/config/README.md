@@ -20,6 +20,7 @@ just renamed these to `patch.ini` and you're good to go.
 
 ## PET-G
 
+* 1kg of PET-G is 345m of 1.75mm filament
 * can print on glass/mirror, but watch out - can stick just too well...
 * add some extra space (around +0.05mm extra) compared to PLA (my OZ is -16.75mm)
 * bed does not need to be super clean (use IPA with care)
