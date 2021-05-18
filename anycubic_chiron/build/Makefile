@@ -14,6 +14,10 @@ STLS := $(STLS_REPO) $(STLS_GEN)
 STLS := $(sort $(STLS))  # remove duplicates
 DEPS := $(STLS_GEN:.stl=.stl.d)
 
+SCAD_FLAGS+=--hardwarnings
+SCAD_FLAGS+=--check-parameters true
+SCAD_FLAGS+=--check-parameter-ranges true
+
 
 .PHONY: all
 all: pla petg
@@ -25,7 +29,7 @@ pla petg: $(STLS)
 build/%.stl: %.scad Makefile
 	$(SILENT)echo "OPENSCAD $<"
 	$(SILENT)mkdir -p "build"
-	$(SILENT)openscad -o "$@" -d "$@.d" "$<" > "$@.log"
+	$(SILENT)openscad $(SCAD_FLAGS) -o "$@" -d "$@.d" "$<" > "$@.log"
 
 build/%.stl: %.stl Makefile
 	$(SILENT)echo "COPY $<"
