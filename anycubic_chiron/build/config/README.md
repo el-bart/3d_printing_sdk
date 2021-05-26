@@ -12,7 +12,7 @@ just renamed these to `patch.ini` and you're good to go.
 
 ## PLA
 
-* 1kg of PLA is 389.33m of 1.75mm filament (i.e. 1m of PLA is 2.57g)
+* 1kg of PLA is 389.33m of 1.75mm filament (i.e. 1m is 2.57g)
 * best printed on a heated glass (mirror)
 * keep 1st layer squashed against bed (my OZ is -16.80mm)
 * clean mirror with IPA (99%)
@@ -21,7 +21,7 @@ just renamed these to `patch.ini` and you're good to go.
 
 ## PET-G
 
-* 1kg of PET-G is 345m of 1.75mm filament (i.e. 1m of PET-G is 2.9g)
+* 1kg of PET-G is 345m of 1.75mm filament (i.e. 1m is 2.9g)
 * can print on glass/mirror, but watch out - can stick just too well...
 * add some extra space (around +0.05mm extra) compared to PLA (my OZ is -16.75mm)
 * bed does not need to be super clean (use IPA with care)
