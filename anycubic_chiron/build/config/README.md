@@ -12,6 +12,7 @@ just renamed these to `patch.ini` and you're good to go.
 
 ## PLA
 
+* 1kg of PLA is 389.33m of 1.75mm filament (i.e. 1m of PLA is 2.57g)
 * best printed on a heated glass (mirror)
 * keep 1st layer squashed against bed (my OZ is -16.80mm)
 * clean mirror with IPA (99%)
