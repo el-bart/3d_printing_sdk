@@ -47,7 +47,8 @@ toxic fumes.
 
 ## TPU
 
-don't if you use Bowden for extrusion.
-you can try if you:
-* disable retraction
-* slow print speed 2-3x.
+* very hygroscopic - dry well before usage
+* printing slow is the key!
+* sticks all too well to PEI sheets
+* stringy
+* be careful with retraction
