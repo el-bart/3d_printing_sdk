@@ -47,6 +47,7 @@ toxic fumes.
 
 ## TPU
 
+* 1kg of TPU is 335.1m of 1.75mm filament (i.e. 1m is 2.98g)
 * very hygroscopic - dry well before usage
 * printing slow is the key!
 * sticks all too well to PEI sheets
