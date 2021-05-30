@@ -52,4 +52,5 @@ toxic fumes.
 * printing slow is the key!
 * sticks all too well to PEI sheets
 * stringy
-* be careful with retraction
+* be careful with retraction settings (may clog extruder, especially if it's open-end style)
+* use adhesives (eg.: Dimafix) when printing on glass/mirror
