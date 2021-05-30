@@ -53,4 +53,4 @@ toxic fumes.
 * sticks all too well to PEI sheets
 * stringy
 * be careful with retraction settings (may clog extruder, especially if it's open-end style)
-* use adhesives (eg.: Dimafix) when printing on glass/mirror
+* use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
