@@ -29,20 +29,8 @@ just renamed these to `patch.ini` and you're good to go.
 * if parts of the print remain on bed use acetone to dissolve and clean these off
 * [PET-G chemical resistance datasheet](http://kmac-plastics.net/data/chemical/petg-chemical.htm)
 * absorbs moisture from the air, that breaks print quality and strength - address:
-  - dry in oven in 50-60*C when unpacked (even new one!) for a couple of hours
+  - dry in oven in 50-60[C] when unpacked (even new one!) for a couple of hours
   - keep in a moisture-absorbing box at all times (also during printing)
-
-
-## ABS
-
-don't.
-toxic fumes.
-
-
-## PC
-
-don't.
-toxic fumes.
 
 
 ## TPU
@@ -54,3 +42,24 @@ toxic fumes.
 * stringy
 * be careful with retraction settings (may clog extruder, especially if it's open-end style)
 * use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
+
+
+## ABS
+
+don't.
+toxic fumes.
+
+* resistsl around 110[C] after printed
+* becomes brittle under long UV light exposure
+
+
+## ASA
+
+* alternative to ABS - very similar properties
+* UV resistant
+
+
+## PC
+
+don't.
+toxic fumes.
