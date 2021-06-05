@@ -63,3 +63,12 @@ toxic fumes.
 
 don't.
 toxic fumes.
+
+
+## PCTG
+
+PETG alternative.
+key difference is layer adhesion, that makes standing hook stronger more than 50% of laying ones.
+it is however not really isotropic 3D print.
+it is very ductile, thus not good for workloads requiring rigidity, but excellent when high impact strength is a must.
+thermally stable to around 80[C], thus same as PETG.
