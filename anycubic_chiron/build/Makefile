@@ -72,6 +72,8 @@ build/$(FILAMENT)/%.gcode: build/%.stl build/$(FILAMENT)/config.ini Makefile
 time: $(TIMES)
 	$(SILENT)[ -z "$(TIMES)" ] || head -100 $(TIMES)
 
+# 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
+# note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
 	$(SILENT)echo "TIMING $(FILAMENT)/$(notdir $<)"
 	$(SILENT)TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
