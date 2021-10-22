@@ -1,0 +1,3 @@
+#!/bin/bash
+set -eu -o pipefail
+exec python3 "/usr/lib/python3/dist-packages/printrun/gcoder.py" "$@"

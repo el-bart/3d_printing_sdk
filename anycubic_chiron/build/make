@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eu -o pipefail
+image="sdk_3d_printing"
+docker build -t "$image" sdk/
+docker run \
+  -it \
+  --rm \
+  -u "$(id -u):$(id -g)" \
+  -v $PWD:/mnt \
+  -w /mnt \
+  "$image" \
+  make "$@"
