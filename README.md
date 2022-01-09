@@ -25,6 +25,7 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
 * convenient `.gitignore` template
 * out-of-source builds
 * parallel build support
+* `m3d` -- Model 3D library of helper functions for OpenSCAD
 
 
 ## usage
