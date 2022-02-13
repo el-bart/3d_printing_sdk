@@ -11,3 +11,4 @@
 * add some simple test suite.
 * do not auto-generate missing `patch.ini` files - default to empty content instead.
 * add support for `config.mk` to customize flags and settings for builds.
+* add `git`'s commit hash as a define, that can be used inside OpenSCAD models, for reference.
