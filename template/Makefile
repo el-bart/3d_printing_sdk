@@ -8,9 +8,11 @@ endif
 
 
 SCADS := $(wildcard *.scad)
+OBJS  := $(wildcard *.obj)
 STLS_REPO := $(addprefix build/, $(wildcard *.stl))
+STLS_CONV := $(addprefix build/, $(OBJS:.obj=.stl))
 STLS_GEN  := $(addprefix build/, $(SCADS:.scad=.stl))
-STLS := $(STLS_REPO) $(STLS_GEN)
+STLS := $(STLS_REPO) $(STLS_CONV) $(STLS_GEN)
 STLS := $(sort $(STLS))  # remove duplicates
 DEPS := $(STLS_GEN:.stl=.stl.d)
 
@@ -35,6 +37,11 @@ build/%.stl: %.stl Makefile
 	$(SILENT)echo "COPY $<"
 	$(SILENT)mkdir -p "build"
 	$(SILENT)cp "$<" "$@"
+
+build/%.stl: %.obj Makefile
+	$(SILENT)echo "CONVERT $<"
+	$(SILENT)mkdir -p "build"
+	$(SILENT)assimp export "$<" "$@" > "$@.log"
 
 -include $(DEPS)
 

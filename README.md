@@ -21,7 +21,9 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
   - new materials
   - new build types
 * automated dependencies tracking for OpenSCAD
-* support for pre-build STL in project
+* support for pre-build:
+  - STL files
+  - OBJ files
 * convenient `.gitignore` template
 * out-of-source builds
 * parallel build support
