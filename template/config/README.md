@@ -43,13 +43,20 @@ just renamed these to `patch.ini` and you're good to go.
 * be careful with retraction settings (may clog extruder, especially if it's open-end style)
 * use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
 
+## Silk
+
+* PLA with elastomer additives
+* a bit more flexible than PLA
+* glassy / shiny look
+* aimed at artistic effect - not recommended for mechanical parts
+
 
 ## ABS
 
 don't.
 toxic fumes.
 
-* resistsl around 110[C] after printed
+* resisting around 110[C] after printed
 * becomes brittle under long UV light exposure
 
 
