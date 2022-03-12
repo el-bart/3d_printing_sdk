@@ -22,10 +22,10 @@ SCAD_FLAGS+=--check-parameter-ranges true
 
 
 .PHONY: all
-all: pla petg tpu
+all: pla petg tpu silk
 
-.PHONY: pla petg tpu
-pla petg tpu:
+.PHONY: pla petg tpu silk
+pla petg tpu silk:
 	$(SILENT)+$(MAKE) FILAMENT=$@ time gcode md5
 
 build/%.stl: %.scad Makefile
