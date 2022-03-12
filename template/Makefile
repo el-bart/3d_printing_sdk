@@ -71,7 +71,7 @@ build/$(FILAMENT)/config.ini: config/$(FILAMENT)/template.ini config/$(FILAMENT)
 gcode: $(GCODES) $(MD5S)
 
 build/$(FILAMENT)/%.gcode: build/%.stl build/$(FILAMENT)/config.ini Makefile
-	$(SILENT)echo "SLIC3R $(FILAMENT)/$(notdir $<)"
+	$(SILENT)echo "SLICER $(FILAMENT)/$(notdir $<)"
 	$(SILENT)prusa-slicer --load "build/$(FILAMENT)/config.ini" --export-gcode --output "$@" "$<" > "$@.log"
 
 
