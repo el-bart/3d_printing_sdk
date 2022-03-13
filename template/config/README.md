@@ -46,7 +46,7 @@ just renamed these to `patch.ini` and you're good to go.
 ## Silk
 
 * PLA with elastomer additives
-* a bit more flexible than PLA
+* much more flexible than PLA
 * glassy / shiny look
 * aimed at artistic effect - not recommended for mechanical parts
 
