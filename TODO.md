@@ -12,3 +12,5 @@
 * do not auto-generate missing `patch.ini` files - default to empty content instead.
 * add support for `config.mk` to customize flags and settings for builds.
 * add `git`'s commit hash as a define, that can be used inside OpenSCAD models, for reference.
+* add support for building each model with different material and patch (eg. in the smae model some things might need to be PET-G and waterproof, while other might be TPU and solid)
+* add support for default 'assmbly' previews generation, so that whole model can be previewed easily, and image added to documentation
