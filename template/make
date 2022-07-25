@@ -5,8 +5,14 @@ image="sdk_3d_printing"
 
 docker build -t "$image" "$app_dir/sdk/"
 
+EXTRA_FLAGS=()
+if tty -s
+then
+  EXTRA_FLAGS+=("-it")
+fi
+
 docker run \
-  -it \
+  "${EXTRA_FLAGS[@]}" \
   --rm \
   -u "$(id -u):$(id -g)" \
   -v "$app_dir:/mnt" \
