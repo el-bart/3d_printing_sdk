@@ -35,13 +35,13 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
 this section covers basic usage of the template.
 
 
-## creating new project
+### creating new project
 
 copy content of `template` directory into your new project workspace.
 put all your OpenSCAD (`*.scad`) files there.
 
 
-## building
+### building
 
 run `./make pla` to trigger build for PLA material, with default slicer settings.
 note that 1st time you run it, SDK will be created, so it will take some time.
@@ -53,7 +53,7 @@ just use regular `make` instead of a wrapper `./make` script.
 note that you can pass `-j$(nproc)` option to `make` to enable parallel building.
 
 
-## selecting build mode
+### selecting build mode
 
 in order set specific patch, that is to be applied for a build, for a given material,
 go to its `config/<material>` directory.
@@ -61,7 +61,7 @@ then create symbolic link called `patch.ini` to a patch, that you'd like to be a
 `ln -s patch_waterproof.ini patch.ini`
 
 
-## selecting material
+### selecting material
 
 this is a runtime configuration parameter.
 just provide material name as a target name for `make`, eg.:
