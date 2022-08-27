@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v0.2
 * `export_template` - helper to create new projects (and upgrade existing ones)
 * docker SDK image is now named after project dir (auto-generated name)
 * docker container no longer needs to be ran in interactive terminal
@@ -16,6 +19,7 @@
   - `fn` - dynamic changes of `$fn`, depending on preview/non-preview modes
   - `screw_head_hex` - helper for hex-headed screws
   - `rounded_cube` - helper for creating cube, with rounded edges
+
 
 ## v0.1
 * dockerized SDK (stable)
