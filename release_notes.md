@@ -3,7 +3,7 @@
 ## dev
 
 
-## v0.2
+## v1.0
 * `export_template` - helper to create new projects (and upgrade existing ones)
 * docker SDK image is now named after project dir (auto-generated name)
 * docker container no longer needs to be ran in interactive terminal
