@@ -1,0 +1,22 @@
+#!/bin/bash
+set -eu -o pipefail
+
+app=$(basename "$0")
+app_dir=$(dirname "$(readlink -e "$0")")
+
+if [ $# -ne 1 ]
+then
+  echo "$app </out/dir>" >&2
+  exit 2
+fi
+out_dir="$1"
+shift 1
+
+mkdir -p "$out_dir"
+out_dir=$(readlink -e "$out_dir")
+
+cd "$app_dir/template"
+cp -rv \
+  .gitignore \
+  * \
+  "$out_dir/"
