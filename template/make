@@ -2,7 +2,7 @@
 set -eu -o pipefail
 app_dir=$(dirname "$(readlink -e "$0")")
 vcs_root=$( { git rev-parse --show-toplevel | xargs dirname ; } 2>/dev/null || dirname "$app_dir")
-image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.' '_')_sdk"
+image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.' '_' | tr '[:upper:]' '[:lower:]')_sdk"
 
 docker build -t "$image" "$app_dir/sdk/"
 

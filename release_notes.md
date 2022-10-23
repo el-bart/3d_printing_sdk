@@ -3,6 +3,7 @@
 ## dev
 * added support for latest prusa-slicer 2.5.0
 * defined printhead clearence for Anycubic Chiron
+* fixed SDK image name, when directory contains upper-case letters
 
 
 ## v1.0
