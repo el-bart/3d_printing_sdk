@@ -62,9 +62,7 @@ config/$(FILAMENT)/patch.ini:
 build/$(FILAMENT)/config.ini: config/$(FILAMENT)/template.ini config/$(FILAMENT)/patch.ini Makefile
 	$(SILENT)echo "CONFIG $(FILAMENT).ini"
 	$(SILENT)mkdir -p "build/$(FILAMENT)"
-	$(SILENT)sed 's/\([^ ]*\) *=.*/^\1 *=/' "config/$(FILAMENT)/patch.ini" > "$@.grep"
-	$(SILENT)grep -v -f "$@.grep" "$<" > "$@.short"
-	$(SILENT)cat "$@.short" "config/$(FILAMENT)/patch.ini" > "$@"
+	$(SILENT)merge_ini -o "$@" -i "config/$(FILAMENT)/template.ini" -i "config/$(FILAMENT)/patch.ini"
 
 
 .PHONY: gcode

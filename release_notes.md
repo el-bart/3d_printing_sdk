@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added proper `*.ini` file merger in python instead of voodoo shell in bash
 * disabled deprecation warnings from gcoder's implementation
 * added support for latest prusa-slicer 2.5.0
 * defined printhead clearence for Anycubic Chiron
