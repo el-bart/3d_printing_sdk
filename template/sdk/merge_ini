@@ -54,7 +54,6 @@ def write_options(path, data):
 
 
 args = parse_args()
-print(args)
 
 base = {}
 for path_list in args.input:
