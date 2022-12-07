@@ -1,16 +1,62 @@
 #!/usr/bin/env python3
-
+import re
+import sys
+import copy
 import argparse
-import configparser
 
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("-i", "--input",           nargs=1, action="append", help="input.ini file to read")
-    p.add_argument("-I", "--input-if-exists", nargs=1, action="append", help="the same as -i, but skips silenty, if file does not exist")
-    p.add_argument("-o", "--output",          nargs=1,                  help="output.ini file to write merged elements to")
+    p.add_argument("-i", "--input",  nargs=1, required=True, action="append", help="input.ini file to read")
+    p.add_argument("-o", "--output", nargs=1, required=True,                  help="output.ini file to write merged elements to")
     return p.parse_args()
+
+
+def parse_line(line):
+    if len(line)>0 and line[0] == '#':
+        return None, None
+    r = re.search("^([a-z_]+) *= *(.*)$", line)
+    if not r:
+        raise Exception("parse_line(): parse error on line:\n{}".format(line))
+    return r.group(1), r.group(2)
+
+
+def read_options(path):
+    out = {}
+    with open(path, 'r') as f:
+        for line in f.readlines():
+            k, v = parse_line(line)
+            if k is not None:
+                out[k] = v;
+    return out
+
+def merge(a, b):
+    out = copy.deepcopy(a)
+    for k,v in b.items():
+        out[k] = v
+    return out
+
+def write_options_to_stream(data, out):
+    for k,v in data.items():
+        out.write("{} = {}\n".format(k, v))
+
+def write_options(path, data):
+    if path == '-':
+        write_options_to_stream(data, sys.stdout);
+        return
+    with open(path, 'w') as out:
+        write_options_to_stream(data, out);
 
 
 args = parse_args()
 print(args)
+
+base = {}
+for path in args.input:
+    path = path[0]
+    print("mergining {}".format(path))
+    update = read_options(path)
+    print(update)
+    base = merge(base, update)
+    print(base)
+write_options(args.output[0], base)
