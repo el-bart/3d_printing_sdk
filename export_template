@@ -20,3 +20,9 @@ cp -rv \
   .gitignore \
   * \
   "$out_dir/"
+
+cd "$out_dir"
+if ! [ -f "project.mk" ]
+then
+  cp -v "config/template/project.mk" "project.mk"
+fi
