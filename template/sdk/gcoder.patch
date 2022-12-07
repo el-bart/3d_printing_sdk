@@ -1,0 +1,20 @@
+--- /usr/lib/python3/dist-packages/printrun/gcoder.py	2020-09-06 13:56:30.000000000 +0200
++++ gcoder.py	2022-12-07 21:24:15.485705031 +0100
+@@ -61,7 +61,7 @@
+     Line = gcoder_line.GLine
+     LightLine = gcoder_line.GLightLine
+ except Exception as e:
+-    logging.warning("Memory-efficient GCoder implementation unavailable: %s" % e)
++    #logging.warning("Memory-efficient GCoder implementation unavailable: %s" % e)
+     Line = PyLine
+     LightLine = PyLightLine
+ 
+@@ -754,7 +754,7 @@
+ 
+     print("Line object size:", sys.getsizeof(Line("G0 X0")))
+     print("Light line object size:", sys.getsizeof(LightLine("G0 X0")))
+-    gcode = GCode(open(sys.argv[1], "rU"))
++    gcode = GCode(open(sys.argv[1], "r"))
+ 
+     print("Dimensions:")
+     xdims = (gcode.xmin, gcode.xmax, gcode.width)
