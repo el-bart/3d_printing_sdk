@@ -1,10 +1,16 @@
 # release notes
 
 ## dev
+* filament is no longer make target, but a variable
+* there is now an interface to add printers
+* there is now an interface to add filaments
+* there is now an interface to add print modes
+* empty `patch.ini` files are no longer generated outside of `build/` dir
+* added `project.mk` file for common settings for a project (values can be overwritten with variables passed on to `make`)
 * added proper `*.ini` file merger in python instead of voodoo shell in bash
 * disabled deprecation warnings from gcoder's implementation
 * added support for latest prusa-slicer 2.5.0
-* defined printhead clearence for Anycubic Chiron
+* defined printhead clearance for Anycubic Chiron
 * fixed SDK image name, when directory contains upper-case letters
 
 
