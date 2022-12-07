@@ -1,1 +1,16 @@
 #!/usr/bin/env python3
+
+import argparse
+import configparser
+
+
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument("-i", "--input",           nargs=1, action="append", help="input.ini file to read")
+    p.add_argument("-I", "--input-if-exists", nargs=1, action="append", help="the same as -i, but skips silenty, if file does not exist")
+    p.add_argument("-o", "--output",          nargs=1,                  help="output.ini file to write merged elements to")
+    return p.parse_args()
+
+
+args = parse_args()
+print(args)
