@@ -22,7 +22,7 @@ RUN cd /opt && \
     ln -s Prusa* prusa-slicer && \
     ln -s /opt/prusa-slicer/bin/prusa-slicer /usr/local/bin/
 
-# TODO: move it to the core-tools part
+# ini merger + deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3
 COPY merge_ini /usr/local/bin/
