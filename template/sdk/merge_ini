@@ -13,6 +13,11 @@ def parse_args():
 
 
 def parse_line(line):
+    tmp = line.splitlines()
+    if len(tmp) != 1:
+        return None, None
+    if tmp[0] == '':
+        return None, None
     if len(line)>0 and line[0] == '#':
         return None, None
     r = re.search("^([a-z_]+) *= *(.*)$", line)
@@ -49,14 +54,10 @@ def write_options(path, data):
 
 
 args = parse_args()
-print(args)
 
 base = {}
 for path in args.input:
     path = path[0]
-    print("mergining {}".format(path))
     update = read_options(path)
-    print(update)
     base = merge(base, update)
-    print(base)
 write_options(args.output[0], base)
