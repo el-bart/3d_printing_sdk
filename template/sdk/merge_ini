@@ -7,8 +7,8 @@ import argparse
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument("-i", "--input",  nargs=1, required=True, action="append", help="input.ini file to read")
-    p.add_argument("-o", "--output", nargs=1, required=True,                  help="output.ini file to write merged elements to")
+    p.add_argument("-i", "--input", nargs='+', required=True, action="append", help="sequence of input.ini files to read")
+    p.add_argument("-o", "--output", nargs=1, required=True, help="output.ini file to write merged elements to")
     return p.parse_args()
 
 
@@ -54,10 +54,11 @@ def write_options(path, data):
 
 
 args = parse_args()
+print(args)
 
 base = {}
-for path in args.input:
-    path = path[0]
-    update = read_options(path)
-    base = merge(base, update)
+for path_list in args.input:
+    for path in path_list:
+      update = read_options(path)
+      base = merge(base, update)
 write_options(args.output[0], base)
