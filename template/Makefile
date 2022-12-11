@@ -17,11 +17,12 @@ all: $(TARGETS) time
 .PHONY: $(TARGETS)
 $(TARGETS): Makefile
 	$(SILENT)+$(MAKE) --no-print-directory \
-		PRINTER=$(shell  grep PRINTER  project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//') \
-		FILAMENT=$(shell grep FILAMENT project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//') \
-		MODE=$(shell     grep MODE     project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//') \
+		PRINTER=$(shell  if [ -n "$(PRINTER)"  ] ; then echo "$(PRINTER)"  ; else grep "^PRINTER"  project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
+		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep "^FILAMENT" project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
+		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep "^MODE"     project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.ini" ] && echo "$@.ini") \
-		"build/$@.ts"
+		VERBOSE=$(VERBOSE) \
+		"build/$@.proxy"
 
 
 ifneq ($(PRINTER),)
@@ -30,11 +31,10 @@ SCAD_FLAGS+=--hardwarnings
 SCAD_FLAGS+=--check-parameters true
 SCAD_FLAGS+=--check-parameter-ranges true
 
-
-build/%.ts: \
+build/%.proxy: \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.time \
 		Makefile
-	$(SILENT)date > "$@"
+	$(SILENT)true
 
 build/%.stl: %.scad Makefile
 	$(SILENT)echo "OPENSCAD $<"
