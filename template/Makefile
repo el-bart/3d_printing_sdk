@@ -31,7 +31,6 @@ SCAD_FLAGS+=--check-parameters true
 SCAD_FLAGS+=--check-parameter-ranges true
 
 
-.PHONY: %.ts
 build/%.ts: \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.time \
 		Makefile
