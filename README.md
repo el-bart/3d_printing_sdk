@@ -2,6 +2,8 @@
 
 environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds) of your models, for a 3D printers.
 
+*TODO: this documentation is outdated - it reflects how v1.0 worked. it shall be rewritten.*
+
 
 ## features
 * Docker-based SDK definition, for stability
@@ -28,6 +30,11 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
 * out-of-source builds
 * parallel build support
 * `m3d` -- Model 3D library of helper functions for OpenSCAD
+* per-model customization of:
+  - printer type
+  - filament type
+  - build mode type
+  - slicer options
 
 
 ## usage

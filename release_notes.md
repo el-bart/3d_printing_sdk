@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+* added per-target slicer options customization step
+* added per-target customization of build type (`PRINTER`/`FILAMENT`/`MODE`)
+* removed `md5` targets as it was not very useful in practice
 * filament is no longer make target, but a variable
 * there is now an interface to add printers
 * there is now an interface to add filaments
