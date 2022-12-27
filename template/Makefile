@@ -67,7 +67,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
 		Makefile
 	$(SILENT)echo "SLICER $(PRINTER)/$(FILAMENT)/$(MODE)/$(notdir $<)"
-	$(SILENT)prusa-slicer --load "$($@:.gcode=.ini)" --export-gcode --output "$@" "$<" > "$@.log"
+	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log"
 
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it
