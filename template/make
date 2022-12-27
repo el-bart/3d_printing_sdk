@@ -12,6 +12,11 @@ then
   EXTRA_FLAGS+=("-it")
 fi
 
+if hash git 2>/dev/null
+then
+  EXTRA_FLAGS+=(--env "GIT_HASH=$(git rev-parse --short HEAD)$(git diff --quiet || echo -dirty)")
+fi
+
 docker run \
   "${EXTRA_FLAGS[@]}" \
   --rm \

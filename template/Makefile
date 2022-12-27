@@ -22,12 +22,14 @@ $(TARGETS): Makefile
 		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep "^MODE"     project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.ini" ] && echo "$@.ini") \
 		VERBOSE=$(VERBOSE) \
+		GIT_HASH=$(GIT_HASH) \
 		INTERNAL_RUN=1 \
 		"build/$@.proxy"
 
 
 ifneq ($(INTERNAL_RUN),)
 
+SCAD_FLAGS+=-D GIT_HASH=\"$(GIT_HASH)\"
 SCAD_FLAGS+=--hardwarnings
 SCAD_FLAGS+=--check-parameters true
 SCAD_FLAGS+=--check-parameter-ranges true
