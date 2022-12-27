@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `VCS_HASH` OpenSCAD string variable, that can be embedded into print
 * arachne generator is the default now
 * updated parameters config for latest `prusa-slicer` 2.5.0
 * added per-target slicer options customization step
