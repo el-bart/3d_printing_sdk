@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* updated parameters config for latest `prusa-slicer` 2.5.0
 * added per-target slicer options customization step
 * added per-target customization of build type (`PRINTER`/`FILAMENT`/`MODE`)
 * removed `md5` targets as it was not very useful in practice
