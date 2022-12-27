@@ -14,7 +14,7 @@ fi
 
 if hash git 2>/dev/null
 then
-  EXTRA_FLAGS+=(--env "GIT_HASH=$(git rev-parse --short HEAD)$(git diff --quiet || echo -dirty)")
+  EXTRA_FLAGS+=(--env "VCS_HASH=$(git rev-parse --short HEAD)$(git diff --quiet || echo -dirty)")
 fi
 
 docker run \
