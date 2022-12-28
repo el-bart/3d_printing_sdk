@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.0
 * added `transparent` mode for PET-G filament
 * added `VCS_HASH` OpenSCAD string variable, that can be embedded into print
 * arachne generator is the default now
@@ -9,9 +12,10 @@
 * added per-target customization of build type (`PRINTER`/`FILAMENT`/`MODE`)
 * removed `md5` targets as it was not very useful in practice
 * filament is no longer make target, but a variable
-* there is now an interface to add printers
-* there is now an interface to add filaments
-* there is now an interface to add print modes
+* there is now extensible interface to add new:
+  - printers
+  - filaments
+  - print modes
 * empty `patch.ini` files are no longer generated outside of `build/` dir
 * added `project.mk` file for common settings for a project (values can be overwritten with variables passed on to `make`)
 * added proper `*.ini` file merger in python instead of voodoo shell in bash
