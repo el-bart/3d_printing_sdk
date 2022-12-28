@@ -9,20 +9,24 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
 * Docker-based SDK definition, for stability
 * support for different build types:
   - precise prints
-  - print-for-speed
-  - print-for-strength
+  - speed (shorter print time)
+  - strength
   - hallow
   - waterproof
   - solid
+  - transparent
 * support for different materials:
   - PLA
   - PET-G
   - TPU
   - PLActive
+  - silk
 * extensible interface for:
   - new materials
-  - new build types
+  - new build modes
+  - new printers
 * automated dependencies tracking for OpenSCAD
+* `VCS_HASH` generation at build time
 * support for pre-build:
   - STL files
   - OBJ files
@@ -33,8 +37,7 @@ environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible
 * per-model customization of:
   - printer type
   - filament type
-  - build mode type
-  - slicer options
+  - build mode
 
 
 ## usage
