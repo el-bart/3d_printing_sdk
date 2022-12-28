@@ -54,8 +54,6 @@ build/%.stl: %.obj Makefile
 	$(SILENT)mkdir -p "build"
 	$(SILENT)assimp export "$<" "$@" > "$@.log"
 
--include $(DEPS)
-
 build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 		config/printer/$(PRINTER)/printer.ini \
 		config/printer/$(PRINTER)/filament/$(FILAMENT)/filament.ini \
