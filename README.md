@@ -2,8 +2,6 @@
 
 environment for [reproducible builds](https://en.wikipedia.org/wiki/Reproducible_builds) of your models, for a 3D printers.
 
-*TODO: this documentation is outdated - it reflects how v1.0 worked. it shall be rewritten.*
-
 
 ## features
 * Docker-based SDK definition, for stability
@@ -47,35 +45,66 @@ this section covers basic usage of the template.
 
 ### creating new project
 
-copy content of `template` directory into your new project workspace.
-put all your OpenSCAD (`*.scad`) files there.
+use `./export_template` script, to generate a new template.
+location is specified as a parameter to the script.
+
+if this is an empty directory, new setup with reasonable defaults, is prepared.
+if project files already exist, only build gets updated - user defined elements are not touched.
+
+once template is ready, put all your OpenSCAD (`*.scad`) files there.
+type `./make` to build everything.
+
+
+#### project defaults
+
+`project.mk` file defines default for project, namely:
+- `PRINTER`
+- `FILAMENT`
+- `MODE`
+
+
+#### per-file overrides
+
+it is possible to override default settings from `project.mk`, on a per-file basis.
+having file named `foobar.scad` create `foobar.config` and add any number of settings from `project.mk`.
+values, that are not explicitly provided will be taken from `project.mk`.
+
+this option is best suited for a multi-part builds, eg.:
+- having waterproof PET-G hull (multipart - thus default)
+- TPU solid gaskets
+- PLA model stand, print for quality
 
 
 ### building
 
-run `./make pla` to trigger build for PLA material, with default slicer settings.
+run `./make` to trigger build for material, slicer settings and printer, defined in `project.mk`.
 note that 1st time you run it, SDK will be created, so it will take some time.
 after that, image will be cached and using it will become much faster.
 
 if you do not want/need to use Docker, you can also use your own, local SDK.
 just use regular `make` instead of a wrapper `./make` script.
+note however the scripts sets `VCS_HASH` value for OpenSCAD source files, too.
 
-note that you can pass `-j$(nproc)` option to `make` to enable parallel building.
+note that you can pass `-j$(nproc)` option to `./make` to enable parallel building.
+to see what exact commands are executed pass `VERBOSE=1` to `./make`.
 
 
 ### selecting build mode
 
-in order set specific patch, that is to be applied for a build, for a given material,
-go to its `config/<material>` directory.
-then create symbolic link called `patch.ini` to a patch, that you'd like to be applied, eg.:
-`ln -s patch_waterproof.ini patch.ini`
+in order set specific mode for your build on a given printer, for a given material,
+go to `config/printer/<your_printer>/filament/<your_filament>/mode/` directory.
+it lists all modes, provided for a given printer and filament combination (`none.ini` is default option).
+
+in order to select a given mode globally, just edit `project.mk` and put it there as `MODE` name (i.e. filename w/o `.ini` suffix).
+you can also set it on a per-file basis, as described in `per-file overrides` section.
 
 
 ### selecting material
 
-this is a runtime configuration parameter.
-just provide material name as a target name for `make`, eg.:
-`make pla`.
+in order set specific material for your build on a given printer,
+go to `config/printer/<your_printer>/filament/` directory.
+each directory there corresponds to a given material.
+choose one and set it as a default in `project.mk` or customize per-file as covered in `per-file overrides` section.
 
 
 ## customizing
@@ -83,20 +112,53 @@ just provide material name as a target name for `make`, eg.:
 this section covers how to extend functionality of the base package.
 
 
+### adding printers
+
+go to `config/printer/` directory.
+all supported printers are listed there.
+you can add new printer by creating a directory names after it.
+inside the directory `printer.ini` file is expected to be present, setting default settings for a given printer type.
+
+
 ### adding materials
 
-inside `config` directory, create new directory, named after your material.
-put a `template.ini` config for the material there.
-it will be used, along with patches to create final config file.
+material settings are per-printer.
+inside `config/printer/<your_printer>/filemant/` directory, create new directory, named after your material.
+put a `filament.ini` config for the material there.
+it will be used to create a final config file.
 
-note that at this point this also requires small change in `Makefile`.
-look for places where `pla` string is present, for guidance.
-sorry for inconvenience -- this will be fixed soon (see TODO.md).
+remember to also create `mode/` directory and `mode/none.ini` empty file.
+this is a default print mode, that does not optimize for any special property.
 
 
 ### adding build mode
 
-in order to create a new build mode, go to `config/<material_name>/` directory.
-create a `patch_<name>.ini` file there.
-list there only the options, that you'd like to be overwritten, compared to default `template.ini`.
+mode settings are specific for printer+filament combination.
+inside `config/printer/<your_printer>/filemant/<your_filament>/mode/` directory, create new file, named after mode you'd like to provide.
+create a `<your_mode>.ini` file there.
+list there only the options, that you'd like to be overwritten, compared to default `printer.ini` and `filament.ini`.
 you can use comments as well.
+
+make sure to check other profiles, in order to keep naming consistent.
+
+
+### configuration priorities
+
+note that you can (effectively) have the same parameters set in different places, namely for:
+- printer
+- filament
+- mode
+- per-file override
+each parameter is applied/updated in this exact order.
+effectively last override wins (i.e. `per-file override` step has a final say in all cases).
+
+
+## contributing
+
+you're more than welcome to contribute. :)
+most likely you'll want to add your own printer.
+please keep naming conventions, following existing code.
+you also do not need to add all the possible modes and filament types.
+it's better to have less options, but tested and known to be working, rather than bunch of copy-and-paste, unreliable settings.
+
+in order to contribute just file a PR with your changes.
