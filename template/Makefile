@@ -52,7 +52,7 @@ build/%.stl: %.stl Makefile
 build/%.stl: %.obj Makefile
 	$(SILENT)echo "CONVERT $<"
 	$(SILENT)mkdir -p "build"
-	$(SILENT)assimp export "$<" "$@" > "$@.log"
+	$(SILENT)assimp export "$<" "$@" > "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
 build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 		config/printer/$(PRINTER)/printer.ini \
@@ -68,7 +68,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
 		Makefile
 	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
-	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log"
+	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it

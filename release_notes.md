@@ -3,9 +3,9 @@
 ## dev
 * stylistic:
   - decreased verbosity of OpenSCAD build (now shown only on errors)
-  - each step will now display output, only if it fails
   - unified displaying of building steps
   - each step now informs for which printer/filament/mode it's printing (if that's relevant for the step)
+- each step will now display output, if it fails
 
 
 ## v2.0
