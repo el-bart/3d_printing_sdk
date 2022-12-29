@@ -42,7 +42,7 @@ build/%.proxy: \
 build/%.stl: %.scad Makefile
 	$(SILENT)echo "OPENSCAD $<"
 	$(SILENT)mkdir -p "build"
-	$(SILENT)openscad $(SCAD_FLAGS) -o "$@" -d "$@.d" "$<" > "$@.log"
+	$(SILENT)openscad $(SCAD_FLAGS) -o "$@" -d "$@.d" "$<" > "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
 build/%.stl: %.stl Makefile
 	$(SILENT)echo "COPY $<"
