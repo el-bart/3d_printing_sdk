@@ -152,6 +152,18 @@ note that you can (effectively) have the same parameters set in different places
 each parameter is applied/updated in this exact order.
 effectively last override wins (i.e. `per-file override` step has a final say in all cases).
 
+on top of that it is also possible to override any of parameters from `project.mk`, using
+variables passed to `./make` call, namely:
+- `PRINTER`
+- `FILAMENT`
+- `MODE`
+most noticeably it is useful to use a custom printer settings (i.e. overriding `PRINTER`),
+without affecting default project's settings (these typically match project's author setup).
+it is thus easy to introduce multiple, non-conflicting settings, for each project member/user.
+it's enough to for each user to reflect set of filaments and build modes, used by the project's author,
+but for their own printer.
+this way everyone can use the same source files to build for different printers.
+
 
 ## contributing
 
