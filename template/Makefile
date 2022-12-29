@@ -67,13 +67,13 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
 		Makefile
-	$(SILENT)echo "SLICER $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
+	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log"
 
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
-	$(SILENT)echo "TIMING $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
+	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
 
 endif
