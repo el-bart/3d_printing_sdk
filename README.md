@@ -88,6 +88,10 @@ note however the scripts sets `VCS_HASH` value for OpenSCAD source files, too.
 note that you can pass `-j$(nproc)` option to `./make` to enable parallel building.
 to see what exact commands are executed pass `VERBOSE=1` to `./make`.
 
+to build just one, particular target, it's enough to pass name of it to `./make`.
+targets are named after OpenSCAD/STL/OBJ files, just without an extensions.
+eg. having `foobar.scad` (along with many others), target would be `./make foobar`.
+
 
 ### selecting build mode
 
