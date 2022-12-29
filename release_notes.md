@@ -3,6 +3,7 @@
 ## dev
 * stylistic:
   - decreased verbosity of OpenSCAD build (now shown only on errors)
+  - `gcoder` will now output errors, too
   - unified displaying of building steps
   - each step now informs for which printer/filament/mode it's printing (if that's relevant for the step)
 - each step will now display output, if it fails

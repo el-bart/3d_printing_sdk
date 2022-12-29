@@ -74,7 +74,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 # note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
 	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
-	$(SILENT)TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
+	$(SILENT)gcoder "$<" > "$@" 2>&1 || { cat "$@" ; rm -f "$@" ; exit 2 ; }
 
 endif
 
