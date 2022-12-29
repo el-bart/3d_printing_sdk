@@ -59,7 +59,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 		config/printer/$(PRINTER)/filament/$(FILAMENT)/filament.ini \
 		config/printer/$(PRINTER)/filament/$(FILAMENT)/mode/$(MODE).ini \
 		$(CUSTOM_CONFIG)
-	$(SILENT)echo "CONFIG $(notdir $@)"
+	$(SILENT)echo "CONFIG $(notdir $@) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)mkdir -p "$$(dirname "$@")"
 	$(SILENT)merge_ini -o "$@" -i $^
 
@@ -67,13 +67,13 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
 		Makefile
-	$(SILENT)echo "SLICER $(PRINTER)/$(FILAMENT)/$(MODE)/$(notdir $<)"
+	$(SILENT)echo "SLICER $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log"
 
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
-	$(SILENT)echo "TIMING $(FILAMENT)/$(notdir $<)"
+	$(SILENT)echo "TIMING $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)TMP=$(shell mktemp) ; gcoder "$<" > "$$TMP" 2>&1 && mv "$$TMP" "$@" || { rm -f "$$TMP" ; false ; }
 
 endif
