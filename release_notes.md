@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* all configuration options in `*.config` files are now in a form `key=value`
 * more verbose documentation added
 * `project.mk` renamed to `project.config`, for consistency with model files configs
 * stylistic:
