@@ -82,16 +82,19 @@ run `./make` to trigger build for material, slicer settings and printer, defined
 note that 1st time you run it, SDK will be created, so it will take some time.
 after that, image will be cached and using it will become much faster.
 
-if you do not want/need to use Docker, you can also use your own, local SDK.
-just use regular `make` instead of a wrapper `./make` script.
-note however the scripts sets `VCS_HASH` value for OpenSCAD source files, too.
-
 note that you can pass `-j$(nproc)` option to `./make` to enable parallel building.
 to see what exact commands are executed pass `VERBOSE=1` to `./make`.
 
 to build just one, particular target, it's enough to pass name of it to `./make`.
 targets are named after OpenSCAD/STL/OBJ files, just without an extensions.
 eg. having `foobar.scad` (along with many others), target would be `./make foobar`.
+
+if you do not want/need to use Docker, you can also use your own, local SDK.
+just use regular `make` instead of a wrapper `./make` script.
+note however the scripts sets `VCS_HASH` value for OpenSCAD source files, thus it's up to the caller to set it manually, if needed.
+when calling manually, you should set it by yourself.
+you will also need some non-standard tools, that are available in `sdk` directory.
+to make them visible run `PATH+=:sdk make`.
 
 
 ### selecting build mode
