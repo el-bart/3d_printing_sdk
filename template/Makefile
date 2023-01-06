@@ -24,7 +24,7 @@ $(TARGETS): Makefile
 		CUSTOM_INI=$(shell    [ -f "$@.ini"    ] && echo "$@.ini"   ) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.config" ] && echo "$@.config") \
 		VERBOSE=$(VERBOSE) \
-		VCS_HASH=$(VCS_HASH) \
+		VCS_HASH=$(shell  if [ -n "$(VCS_HASH)"  ] ; then echo "$(VCS_HASH)"  ; else echo "unset" ; fi) \
 		INTERNAL_RUN=1 \
 		"build/$@.proxy"
 
