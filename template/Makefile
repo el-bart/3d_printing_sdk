@@ -17,10 +17,10 @@ all: $(TARGETS) time
 .PHONY: $(TARGETS)
 $(TARGETS): Makefile
 	$(SILENT)+$(MAKE) --no-print-directory \
-		PRINTER=$(shell  if [ -n "$(PRINTER)"  ] ; then echo "$(PRINTER)"  ; else grep -h "^PRINTER="  project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
-		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep -h "^FILAMENT=" project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
-		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep -h "^MODE="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
-		COPIES=$(shell   if [ -n "$(COPIES)"   ] ; then echo "$(COPIES)"   ; else grep -h "^COPIES="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
+		PRINTER_3D=$(shell if [ -n "$(PRINTER_3D)" ]; then echo "$(PRINTER_3D)" ;else grep -h "^PRINTER_3D=" project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
+		FILAMENT=$(shell   if [ -n "$(FILAMENT)"   ]; then echo "$(FILAMENT)"   ;else grep -h "^FILAMENT="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
+		MODE=$(shell       if [ -n "$(MODE)"       ]; then echo "$(MODE)"       ;else grep -h "^MODE="       project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
+		COPIES=$(shell     if [ -n "$(COPIES)"     ]; then echo "$(COPIES)"     ;else grep -h "^COPIES="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		CUSTOM_INI=$(shell    [ -f "$@.ini"    ] && echo "$@.ini"   ) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.config" ] && echo "$@.config") \
 		VERBOSE=$(VERBOSE) \
@@ -37,7 +37,7 @@ SCAD_FLAGS+=--check-parameters true
 SCAD_FLAGS+=--check-parameter-ranges true
 
 build/%.proxy: \
-		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.time \
+		build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.time \
 		Makefile
 	$(SILENT)true
 
@@ -56,22 +56,22 @@ build/%.stl: %.obj Makefile
 	$(SILENT)mkdir -p "build"
 	$(SILENT)assimp export "$<" "$@" > "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
-build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
-		config/printer/$(PRINTER)/printer.ini \
-		config/printer/$(PRINTER)/filament/$(FILAMENT)/filament.ini \
-		config/printer/$(PRINTER)/filament/$(FILAMENT)/mode/$(MODE).ini \
+build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.ini: \
+		config/printer/$(PRINTER_3D)/printer.ini \
+		config/printer/$(PRINTER_3D)/filament/$(FILAMENT)/filament.ini \
+		config/printer/$(PRINTER_3D)/filament/$(FILAMENT)/mode/$(MODE).ini \
 		$(CUSTOM_INI)
-	$(SILENT)echo "CONFIG $(notdir $@) ($(PRINTER)/$(FILAMENT)/$(MODE))"
+	$(SILENT)echo "CONFIG $(notdir $@) ($(PRINTER_3D)/$(FILAMENT)/$(MODE))"
 	$(SILENT)mkdir -p "$$(dirname "$@")"
 	$(SILENT)merge_ini -o "$@" -i $^
 
-build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
+build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
-		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
+		build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.ini \
 		project.config \
 		$(CUSTOM_CONFIG) \
 		Makefile
-	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE), N=$(COPIES))"
+	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE), N=$(COPIES))"
 	$(SILENT)prusa-slicer \
 			--load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" \
 			--export-gcode \
@@ -83,7 +83,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
-	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
+	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE))"
 	$(SILENT)gcoder "$<" > "$@" 2>&1 || { cat "$@" ; rm -f "$@" ; exit 2 ; }
 
 endif

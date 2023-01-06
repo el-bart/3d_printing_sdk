@@ -33,6 +33,7 @@ then
   cp -v "config/template/project.config" "project.config"
 else
   sed -i 's/:=/=/' *.config
+  sed -i 's/^PRINTER=/PRINTER_3D=/' *.config
   sed 's/=.*/=/' "config/template/project.config" | \
     while read opt
     do

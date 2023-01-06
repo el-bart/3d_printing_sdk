@@ -58,7 +58,7 @@ type `./make` to build everything.
 #### project defaults
 
 `project.config` file defines default for project, namely:
-- `PRINTER`
+- `PRINTER_3D`
 - `FILAMENT`
 - `MODE`
 - `COPIES` (how many times given object should be duplicated, when slicing)
@@ -159,11 +159,11 @@ effectively last override wins (i.e. `per-file override` step has a final say in
 
 on top of that it is also possible to override any of parameters from `project.config`, using
 variables passed to `./make` call, namely:
-- `PRINTER`
+- `PRINTER_3D`
 - `FILAMENT`
 - `MODE`
 - `COPIES`
-most noticeably it is useful to use a custom printer settings (i.e. overriding `PRINTER`),
+most noticeably it is useful to use a custom printer settings (i.e. overriding `PRINTER_3D`),
 without affecting default project's settings (these typically match project's author setup).
 it is thus easy to introduce multiple, non-conflicting settings, for each project member/user.
 it's enough to for each user to reflect set of filaments and build modes, used by the project's author,
