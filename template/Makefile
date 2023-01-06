@@ -68,6 +68,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
+		project.config \
 		$(CUSTOM_CONFIG) \
 		Makefile
 	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE), N=$(COPIES))"
