@@ -36,6 +36,6 @@ else
   sed 's/=.*/=/' "config/template/project.config" | \
     while read opt
     do
-      grep -q "^$opt" "project.config" || grep "^$opt" "config/template/project.config" >> "project.config"
+      grep -q "^$opt" "project.config" || grep "^$opt" "config/template/project.config" | tee -a "project.config"
     done
 fi
