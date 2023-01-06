@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.1
 * renamed `PRINTER` to `PRINTER_3D`, to avoid name-clash with system `PRINTER` variable, for CUPS
 * if `VCS_HASH` is not set, it defaults to `"unset"` value, rather than an empty string
 * `*.config` files are now part of dependency chain for slicing
