@@ -61,6 +61,7 @@ type `./make` to build everything.
 - `PRINTER`
 - `FILAMENT`
 - `MODE`
+- `COPIES` (how many times given object should be duplicated, when slicing)
 
 
 #### per-file overrides
@@ -161,6 +162,7 @@ variables passed to `./make` call, namely:
 - `PRINTER`
 - `FILAMENT`
 - `MODE`
+- `COPIES`
 most noticeably it is useful to use a custom printer settings (i.e. overriding `PRINTER`),
 without affecting default project's settings (these typically match project's author setup).
 it is thus easy to introduce multiple, non-conflicting settings, for each project member/user.

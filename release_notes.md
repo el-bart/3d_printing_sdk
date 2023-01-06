@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `COPIES` `*.config` option, that allows to print multiple duplicates (defaults to `1`)
 * all configuration options in `*.config` files are now in a form `key=value`
 * more verbose documentation added
 * `project.mk` renamed to `project.config`, for consistency with model files configs

@@ -20,6 +20,7 @@ $(TARGETS): Makefile
 		PRINTER=$(shell  if [ -n "$(PRINTER)"  ] ; then echo "$(PRINTER)"  ; else grep -h "^PRINTER="  project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
 		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep -h "^FILAMENT=" project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
 		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep -h "^MODE="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
+		COPIES=$(shell   if [ -n "$(COPIES)"   ] ; then echo "$(COPIES)"   ; else grep -h "^COPIES="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.ini" ] && echo "$@.ini") \
 		VERBOSE=$(VERBOSE) \
 		VCS_HASH=$(VCS_HASH) \
@@ -67,8 +68,14 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
 		Makefile
-	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE))"
-	$(SILENT)prusa-slicer --load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" --export-gcode --output "$@" "$<" > "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
+	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE), N=$(COPIES))"
+	$(SILENT)prusa-slicer \
+			--load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" \
+			--export-gcode \
+			--output "$@" \
+			--duplicate "$(COPIES)" \
+			"$<" \
+			> "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
 # 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
 # note that script is not executable, so you may want to have a wrapper script to run it
