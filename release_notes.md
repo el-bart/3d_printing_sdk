@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* `project.mk` renamed to `project.config`, for consistency with model files configs
 * stylistic:
   - decreased verbosity of OpenSCAD build (now shown only on errors)
   - `gcoder` will now output errors, too

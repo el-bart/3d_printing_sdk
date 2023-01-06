@@ -17,9 +17,9 @@ all: $(TARGETS) time
 .PHONY: $(TARGETS)
 $(TARGETS): Makefile
 	$(SILENT)+$(MAKE) --no-print-directory \
-		PRINTER=$(shell  if [ -n "$(PRINTER)"  ] ; then echo "$(PRINTER)"  ; else grep "^PRINTER"  project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
-		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep "^FILAMENT" project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
-		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep "^MODE"     project.mk "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
+		PRINTER=$(shell  if [ -n "$(PRINTER)"  ] ; then echo "$(PRINTER)"  ; else grep "^PRINTER"  project.config "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
+		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep "^FILAMENT" project.config "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
+		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep "^MODE"     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/.*=//' ; fi) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.ini" ] && echo "$@.ini") \
 		VERBOSE=$(VERBOSE) \
 		VCS_HASH=$(VCS_HASH) \

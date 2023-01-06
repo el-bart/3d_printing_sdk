@@ -57,7 +57,7 @@ type `./make` to build everything.
 
 #### project defaults
 
-`project.mk` file defines default for project, namely:
+`project.config` file defines default for project, namely:
 - `PRINTER`
 - `FILAMENT`
 - `MODE`
@@ -65,9 +65,9 @@ type `./make` to build everything.
 
 #### per-file overrides
 
-it is possible to override default settings from `project.mk`, on a per-file basis.
-having file named `foobar.scad` create `foobar.config` and add any number of settings from `project.mk`.
-values, that are not explicitly provided will be taken from `project.mk`.
+it is possible to override default settings from `project.config`, on a per-file basis.
+having file named `foobar.scad` create `foobar.config` and add any number of settings from `project.config`.
+values, that are not explicitly provided will be taken from `project.config`.
 
 this option is best suited for a multi-part builds, eg.:
 - having waterproof PET-G hull (multipart - thus default)
@@ -77,7 +77,7 @@ this option is best suited for a multi-part builds, eg.:
 
 ### building
 
-run `./make` to trigger build for material, slicer settings and printer, defined in `project.mk`.
+run `./make` to trigger build for material, slicer settings and printer, defined in `project.config`.
 note that 1st time you run it, SDK will be created, so it will take some time.
 after that, image will be cached and using it will become much faster.
 
@@ -99,7 +99,7 @@ in order set specific mode for your build on a given printer, for a given materi
 go to `config/printer/<your_printer>/filament/<your_filament>/mode/` directory.
 it lists all modes, provided for a given printer and filament combination (`none.ini` is default option).
 
-in order to select a given mode globally, just edit `project.mk` and put it there as `MODE` name (i.e. filename w/o `.ini` suffix).
+in order to select a given mode globally, just edit `project.config` and put it there as `MODE` name (i.e. filename w/o `.ini` suffix).
 you can also set it on a per-file basis, as described in `per-file overrides` section.
 
 
@@ -108,7 +108,7 @@ you can also set it on a per-file basis, as described in `per-file overrides` se
 in order set specific material for your build on a given printer,
 go to `config/printer/<your_printer>/filament/` directory.
 each directory there corresponds to a given material.
-choose one and set it as a default in `project.mk` or customize per-file as covered in `per-file overrides` section.
+choose one and set it as a default in `project.config` or customize per-file as covered in `per-file overrides` section.
 
 
 ## customizing
@@ -156,7 +156,7 @@ note that you can (effectively) have the same parameters set in different places
 each parameter is applied/updated in this exact order.
 effectively last override wins (i.e. `per-file override` step has a final say in all cases).
 
-on top of that it is also possible to override any of parameters from `project.mk`, using
+on top of that it is also possible to override any of parameters from `project.config`, using
 variables passed to `./make` call, namely:
 - `PRINTER`
 - `FILAMENT`

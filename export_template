@@ -22,7 +22,19 @@ cp -rv \
   "$out_dir/"
 
 cd "$out_dir"
-if ! [ -f "project.mk" ]
+
+if [ -f "project.mk" ]
 then
-  cp -v "config/template/project.mk" "project.mk"
+  mv -v "project.mk" "project.config"
+fi
+
+if ! [ -f "project.config" ]
+then
+  cp -v "config/template/project.config" "project.config"
+else
+  sed 's/=.*/=/' "config/template/project.config" | \
+    while read opt
+    do
+      grep -q "$opt" "project.config" || grep "$opt" "config/template/project.config" >> "project.config"
+    done
 fi
