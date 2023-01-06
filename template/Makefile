@@ -21,7 +21,8 @@ $(TARGETS): Makefile
 		FILAMENT=$(shell if [ -n "$(FILAMENT)" ] ; then echo "$(FILAMENT)" ; else grep -h "^FILAMENT=" project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
 		MODE=$(shell     if [ -n "$(MODE)"     ] ; then echo "$(MODE)"     ; else grep -h "^MODE="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
 		COPIES=$(shell   if [ -n "$(COPIES)"   ] ; then echo "$(COPIES)"   ; else grep -h "^COPIES="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z_]*=//' ; fi) \
-		CUSTOM_CONFIG=$(shell [ -f "$@.ini" ] && echo "$@.ini") \
+		CUSTOM_INI=$(shell    [ -f "$@.ini"    ] && echo "$@.ini"   ) \
+		CUSTOM_CONFIG=$(shell [ -f "$@.config" ] && echo "$@.config") \
 		VERBOSE=$(VERBOSE) \
 		VCS_HASH=$(VCS_HASH) \
 		INTERNAL_RUN=1 \
@@ -59,7 +60,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 		config/printer/$(PRINTER)/printer.ini \
 		config/printer/$(PRINTER)/filament/$(FILAMENT)/filament.ini \
 		config/printer/$(PRINTER)/filament/$(FILAMENT)/mode/$(MODE).ini \
-		$(CUSTOM_CONFIG)
+		$(CUSTOM_INI)
 	$(SILENT)echo "CONFIG $(notdir $@) ($(PRINTER)/$(FILAMENT)/$(MODE))"
 	$(SILENT)mkdir -p "$$(dirname "$@")"
 	$(SILENT)merge_ini -o "$@" -i $^
@@ -67,6 +68,7 @@ build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini: \
 build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.gcode: \
 		build/%.stl \
 		build/$(PRINTER)/$(FILAMENT)/$(MODE)/%.ini \
+		$(CUSTOM_CONFIG) \
 		Makefile
 	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER)/$(FILAMENT)/$(MODE), N=$(COPIES))"
 	$(SILENT)prusa-slicer \
