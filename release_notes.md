@@ -1,7 +1,7 @@
 # release notes
 
 ## dev
-
+* added `project.ini` customization point, that can be applied to all sources at once
 
 ## v2.1
 * renamed `PRINTER` to `PRINTER_3D`, to avoid name-clash with system `PRINTER` variable, for CUPS

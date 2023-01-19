@@ -21,7 +21,8 @@ $(TARGETS): Makefile
 		FILAMENT=$(shell   if [ -n "$(FILAMENT)"   ]; then echo "$(FILAMENT)"   ;else grep -h "^FILAMENT="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		MODE=$(shell       if [ -n "$(MODE)"       ]; then echo "$(MODE)"       ;else grep -h "^MODE="       project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		COPIES=$(shell     if [ -n "$(COPIES)"     ]; then echo "$(COPIES)"     ;else grep -h "^COPIES="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
-		CUSTOM_INI=$(shell    [ -f "$@.ini"    ] && echo "$@.ini"   ) \
+		CUSTOM_PROJECT_INI=$(shell [ -f "project.ini" ] && echo "project.ini" ) \
+		CUSTOM_FILE_INI=$(shell    [ -f "$@.ini"      ] && echo "$@.ini"      ) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.config" ] && echo "$@.config") \
 		VERBOSE=$(VERBOSE) \
 		VCS_HASH=$(shell  if [ -n "$(VCS_HASH)"  ] ; then echo "$(VCS_HASH)"  ; else echo "unset" ; fi) \
@@ -60,7 +61,8 @@ build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.ini: \
 		config/printer/$(PRINTER_3D)/printer.ini \
 		config/printer/$(PRINTER_3D)/filament/$(FILAMENT)/filament.ini \
 		config/printer/$(PRINTER_3D)/filament/$(FILAMENT)/mode/$(MODE).ini \
-		$(CUSTOM_INI)
+		$(CUSTOM_PROJECT_INI) \
+		$(CUSTOM_FILE_INI)
 	$(SILENT)echo "CONFIG $(notdir $@) ($(PRINTER_3D)/$(FILAMENT)/$(MODE))"
 	$(SILENT)mkdir -p "$$(dirname "$@")"
 	$(SILENT)merge_ini -o "$@" -i $^
