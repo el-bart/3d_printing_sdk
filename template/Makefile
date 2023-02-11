@@ -88,6 +88,8 @@ build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.gcode: \
 	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE))"
 	$(SILENT)gcoder "$<" > "$@" 2>&1 || { cat "$@" ; rm -f "$@" ; exit 2 ; }
 
+include $(wildcard build/*.d)
+
 endif
 
 
