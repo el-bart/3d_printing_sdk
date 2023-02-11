@@ -1,6 +1,8 @@
 # release notes
 
 ## dev
+
+## v2.2
 * fixed missing dependencies tracking for OpenSCAD sources
 * added `project.ini` customization point, that can be applied to all sources at once
 
