@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `vase` mode for all filaments
 
 ## v2.2
 * fixed missing dependencies tracking for OpenSCAD sources
