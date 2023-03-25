@@ -6,3 +6,4 @@
 * add parameter-based option to scale models, via `project.config`
 * add option to do sequential printing (`--complete-objets`)
 * add optional target for model preview generation
+* add dependencies on optional config files, so that after these are removed, proper elemnts get recompiled
