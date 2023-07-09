@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* SDK migrated to debian 12 (latest stable release)
 * added `vase` mode for all filaments
 
 ## v2.2
