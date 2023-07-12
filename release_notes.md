@@ -1,9 +1,11 @@
 # release notes
 
 ## dev
-* upgraded configs for Anycubic Chiron, based on latest PrusaSlicer configs
 * upgraded PrusaSlicer to 2.6.0
 * SDK migrated to debian 12 (latest stable release)
+* upgraded configs for Anycubic Chiron, based on latest PrusaSlicer configs
+* organic support is now a default choice (though supports are still disabled by default)
+* significantly improved printing speeds
 * added `vase` mode for all filaments
 
 ## v2.2
