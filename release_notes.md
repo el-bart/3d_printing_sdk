@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* `avoid_crossing_curled_overhangs` that cannot be enabled together with `avoid_crossing_perimeters`
 
 
 ## v2.3
