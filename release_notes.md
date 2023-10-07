@@ -1,7 +1,7 @@
 # release notes
 
 ## dev
-
+* `map.scad` and `map_get()` to easy extract values from map-like structures
 
 ## v2.3.1
 * `avoid_crossing_curled_overhangs` that cannot be enabled together with `avoid_crossing_perimeters`
