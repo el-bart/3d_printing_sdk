@@ -1,6 +1,10 @@
 # release notes
 
 ## dev
+* updated retraction setting to match full-metal hotend
+  * increased retraction speed to 40mm/s
+  * increased final retraction at the end of print to 80mm, so that any melted plastic is outside of hot area
+  * increased `silk`'s printing temperature to 230*C (not to be on the edge of spec)
 * `map.scad` and `map_get()` to easy extract values from map-like structures
 
 ## v2.3.1
