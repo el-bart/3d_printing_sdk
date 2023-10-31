@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+* `waterproof` has been re-tested for PET-G and PLA
+* removed ironing from `strength` and `waterproof` profiles, as it can weaken adhesion to whatever comes on top of it
+* in `strength` and `waterproof` seam must always be aligned
 * updated retraction setting to match full-metal hotend
   * increased retraction speed to 40mm/s
   * increased final retraction at the end of print to 80mm, so that any melted plastic is outside of hot area
