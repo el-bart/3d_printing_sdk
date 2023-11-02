@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* decreased `retraction` for waterproof printing, as it results in leaky shape
 * `waterproof` has been re-tested for PET-G and PLA
 * removed ironing from `strength` and `waterproof` profiles, as it can weaken adhesion to whatever comes on top of it
 * in `strength` and `waterproof` seam must always be aligned
