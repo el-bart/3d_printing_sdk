@@ -28,7 +28,7 @@ module stepper_shaft_slot(h, spacing)
 }
 
 
-module stepper_mock_nema17(h, rod_len)
+module stepper_mock_nema17(h, rod_len, mounts_at_zero=false)
 {
   module body()
   {
@@ -47,7 +47,8 @@ module stepper_mock_nema17(h, rod_len)
       cylinder(d=22, h=cbh, $fn=fn(30));
     stepper_shaft_slot(h = h + cbh + rod_len, spacing=0);
   }
-  
+
+  translate([0, 0, (mounts_at_zero?-1:0)*h])
   difference()
   {
     body();
@@ -61,23 +62,23 @@ module stepper_mock_nema17(h, rod_len)
 // 0.7[A]
 // 0.16[Nm]
 // 200[tpr]
-module stepper_mock_17hs4023()
+module stepper_mock_17hs4023(mounts_at_zero=false)
 {
-  stepper_mock_nema17(h=22.8, rod_len=20);
+  stepper_mock_nema17(h=22.8, rod_len=20, mounts_at_zero=mounts_at_zero);
 }
 
 // 12[V]
 // 1.5[A]
 // 0.42[Nm]
 // 200[tpr]
-module stepper_mock_17hs4401()
+module stepper_mock_17hs4401(mounts_at_zero=false)
 {
-  stepper_mock_nema17(h=37.3, rod_len=21.75);
+  stepper_mock_nema17(h=37.3, rod_len=21.75, mounts_at_zero=mounts_at_zero);
 }
 
 
 //rotate([0, -90, 0])
-stepper_mock_17hs4023();
+stepper_mock_17hs4023(mounts_at_zero=true);
 
 translate([50, 0, 0])
-  stepper_mock_17hs4401();
+  stepper_mock_17hs4401(mounts_at_zero=true);
