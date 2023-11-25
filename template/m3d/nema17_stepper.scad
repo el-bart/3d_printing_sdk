@@ -3,7 +3,7 @@ use <fn.scad>
 eps = 0.01;
 
 
-module stepper_mount_holes_template(h)
+module nema17_stepper_mount_holes_template(h)
 {
   span = 31;
   for(ix=[-1, +1])
@@ -13,7 +13,7 @@ module stepper_mount_holes_template(h)
 }
 
 
-module stepper_shaft_slot(h, spacing)
+module nema17_stepper_shaft_slot(h, spacing)
 {
   d = 5;
   cut = 0.5;
@@ -28,7 +28,7 @@ module stepper_shaft_slot(h, spacing)
 }
 
 
-module stepper_mock_nema17(h, rod_len, mounts_at_zero=false)
+module nema17_stepper_mock(h, rod_len, mounts_at_zero=false)
 {
   module body()
   {
@@ -45,14 +45,14 @@ module stepper_mock_nema17(h, rod_len, mounts_at_zero=false)
     cbh = 2;
     translate([0, 0, h])
       cylinder(d=22, h=cbh, $fn=fn(30));
-    stepper_shaft_slot(h = h + cbh + rod_len, spacing=0);
+    nema17_stepper_shaft_slot(h = h + cbh + rod_len, spacing=0);
   }
 
   translate([0, 0, (mounts_at_zero?-1:0)*h])
   difference()
   {
     body();
-    stepper_mount_holes_template(h=h)
+    nema17_stepper_mount_holes_template(h=h)
       translate([0, 0, -5])
         cylinder(d=3, h=5+eps, $fn=fn(20));
   }
@@ -62,23 +62,23 @@ module stepper_mock_nema17(h, rod_len, mounts_at_zero=false)
 // 0.7[A]
 // 0.16[Nm]
 // 200[tpr]
-module stepper_mock_17hs4023(mounts_at_zero=false)
+module nema17_stepper_mock_17hs4023(mounts_at_zero=false)
 {
-  stepper_mock_nema17(h=22.8, rod_len=20, mounts_at_zero=mounts_at_zero);
+  nema17_stepper_mock(h=22.8, rod_len=20, mounts_at_zero=mounts_at_zero);
 }
 
 // 12[V]
 // 1.5[A]
 // 0.42[Nm]
 // 200[tpr]
-module stepper_mock_17hs4401(mounts_at_zero=false)
+module nema17_stepper_mock_17hs4401(mounts_at_zero=false)
 {
-  stepper_mock_nema17(h=37.3, rod_len=21.75, mounts_at_zero=mounts_at_zero);
+  nema17_stepper_mock(h=37.3, rod_len=21.75, mounts_at_zero=mounts_at_zero);
 }
 
 
 //rotate([0, -90, 0])
-stepper_mock_17hs4023(mounts_at_zero=true);
+nema17_stepper_mock_17hs4023(mounts_at_zero=true);
 
 translate([50, 0, 0])
-  stepper_mock_17hs4401(mounts_at_zero=true);
+  nema17_stepper_mock_17hs4401(mounts_at_zero=true);
