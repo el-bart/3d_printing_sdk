@@ -1,14 +1,17 @@
 # release notes
 
 ## dev
+* extended `m3d` helpers library for OpenSCAD:
+  - `nema17_stepper_mock_17hs4023` - pupular stepper motor mock
+  - `nema17_stepper_mock_17hs4401` - pupular stepper motor mock
 * decreased `retraction` for waterproof printing, as it results in leaky shape
 * `waterproof` has been re-tested for PET-G and PLA
 * removed ironing from `strength` and `waterproof` profiles, as it can weaken adhesion to whatever comes on top of it
 * in `strength` and `waterproof` seam must always be aligned
 * updated retraction setting to match full-metal hotend
-  * increased retraction speed to 40mm/s
-  * increased final retraction at the end of print to 80mm, so that any melted plastic is outside of hot area
-  * increased `silk`'s printing temperature to 230*C (not to be on the edge of spec)
+  - increased retraction speed to 40mm/s
+  - increased final retraction at the end of print to 80mm, so that any melted plastic is outside of hot area
+  - increased `silk`'s printing temperature to 230*C (not to be on the edge of spec)
 * `map.scad` and `map_get()` to easy extract values from map-like structures
 
 ## v2.3.1
