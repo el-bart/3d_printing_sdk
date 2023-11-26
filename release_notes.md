@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* updated PrusaSlicer to v2.7.0
 * extended `m3d` helpers library for OpenSCAD:
   - `nema17_stepper_mock_17hs4023` - pupular stepper motor mock
   - `nema17_stepper_mock_17hs4401` - pupular stepper motor mock
