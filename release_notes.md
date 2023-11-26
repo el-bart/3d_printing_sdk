@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.4.0
 * updated PrusaSlicer to v2.7.0
 * fixed error when source is not under `git` VCS
 * extended `m3d` helpers library for OpenSCAD:
@@ -16,6 +19,7 @@
   - increased `silk`'s printing temperature to 230*C (not to be on the edge of spec)
 * `map.scad` and `map_get()` to easy extract values from map-like structures
 
+
 ## v2.3.1
 * `avoid_crossing_curled_overhangs` that cannot be enabled together with `avoid_crossing_perimeters`
 
@@ -28,9 +32,11 @@
 * significantly improved printing speeds
 * added `vase` mode for all filaments
 
+
 ## v2.2
 * fixed missing dependencies tracking for OpenSCAD sources
 * added `project.ini` customization point, that can be applied to all sources at once
+
 
 ## v2.1
 * renamed `PRINTER` to `PRINTER_3D`, to avoid name-clash with system `PRINTER` variable, for CUPS
