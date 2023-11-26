@@ -1,7 +1,14 @@
 #!/bin/bash
 set -eu -o pipefail
 app_dir=$(dirname "$(readlink -e "$0")")
-vcs_root=$( { git rev-parse --show-toplevel | xargs dirname ; } 2>/dev/null || dirname "$app_dir")
+if git status > /dev/null 2>&1
+then
+  vcs_root=$(git rev-parse --show-toplevel 2>/dev/null | xargs dirname)
+  vcs_hash=$(git rev-parse --short HEAD)$(git diff --quiet || echo -dirty)
+else
+  vcs_root=$(dirname "$app_dir")
+  vcs_hash="N/A"
+fi
 image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]' '[:lower:]')_sdk"
 
 docker build -t "$image" "$app_dir/sdk/"
@@ -12,9 +19,9 @@ then
   EXTRA_FLAGS+=("-it")
 fi
 
-if hash git 2>/dev/null
+if [ -n "${vcs_hash:-}" ]
 then
-  EXTRA_FLAGS+=(--env "VCS_HASH=$(git rev-parse --short HEAD)$(git diff --quiet || echo -dirty)")
+  EXTRA_FLAGS+=(--env "VCS_HASH=$vcs_hash")
 fi
 
 docker run \
