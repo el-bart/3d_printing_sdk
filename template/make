@@ -13,19 +13,19 @@ image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]'
 
 docker build -t "$image" "$app_dir/sdk/"
 
-EXTRA_FLAGS=()
+extra_flags=()
 if tty -s
 then
-  EXTRA_FLAGS+=("-it")
+  extra_flags+=("-it")
 fi
 
 if [ -n "${vcs_hash:-}" ]
 then
-  EXTRA_FLAGS+=(--env "VCS_HASH=$vcs_hash")
+  extra_flags+=(--env "VCS_HASH=$vcs_hash")
 fi
 
 docker run \
-  "${EXTRA_FLAGS[@]}" \
+  "${extra_flags[@]}" \
   --rm \
   -u "$(id -u):$(id -g)" \
   -v "$app_dir:/mnt" \
