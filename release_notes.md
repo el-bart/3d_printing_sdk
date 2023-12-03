@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* when printing in `vase` mode, slowdown happens only when <2s layer time
 
 
 ## v2.4.0
