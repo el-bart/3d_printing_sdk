@@ -1,7 +1,9 @@
 # release notes
 
 ## dev
-* when printing in `vase` mode, slowdown happens only when <2s layer time
+* updating TPU `seal` with extra settings to avoid artifacts
+* renamed TPU `solid` mode as `seal`
+* when printing in `vase` mode, slowdown happens only when <5s layer time
 
 
 ## v2.4.0
