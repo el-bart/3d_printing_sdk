@@ -27,7 +27,7 @@ just use one of these as your print `MODE` and you're good to go.
   - 1m is 2.9g
   - 1l is 1.205kg
 * can print on glass/mirror, but watch out - can stick just too well...
-* add some extra space (around +0.05mm extra) compared to PLA (my OZ is -16.75mm)
+* add some extra space (around +0.05mm extra) compared to PLA
 * bed does not need to be super clean (use IPA with care)
 * use a mixture of water with a drop of dish washing soap to "paint" the glass surface (minimizes PET-G stickiness to the reasonable value)
 * if parts of the print remain on bed use acetone to dissolve and clean these off
@@ -48,6 +48,9 @@ just use one of these as your print `MODE` and you're good to go.
 * stringy
 * be careful with retraction settings (may clog extruder, especially if it's open-end style)
 * use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
+* use a mixture of water with a drop of dish washing soap to "paint" the glass surface for larger objects
+* after printing mirror can be printed with acetone
+
 
 ## Silk
 
