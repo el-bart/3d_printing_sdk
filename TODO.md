@@ -8,3 +8,4 @@
 * add optional target for model preview generation
 * add dependencies on optional config files, so that after these are removed, proper elements get recompiled
 * `cube_center(size, axis)` - cube that's centered, but only along selected axis
+* add local config overrides (per: printer, filament, mode)
