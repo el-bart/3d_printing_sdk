@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.5.0
 * increased resolution for all print modes but 'speed', where resolution is down to `0.2`
 * updating TPU `seal` with extra settings to avoid artifacts
 * renamed TPU `solid` mode as `seal`
