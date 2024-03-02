@@ -4,6 +4,7 @@
 * `m3d` new functionalities:
   * added `side_rounded_cube()` to `rounded_cube.scad`
   * added `all.scad` convenience header, that pulls in all the modules at once
+  * added `math.scad` with some useful math constants (`pi`, `e` and `eps`(ilon))
 
 
 ## v2.5.0
