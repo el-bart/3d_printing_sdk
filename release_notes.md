@@ -1,7 +1,9 @@
 # release notes
 
 ## dev
-* added `side_rounded_cube()` to `rounded_cube.scad`
+* `m3d` new functionalities:
+  * added `side_rounded_cube()` to `rounded_cube.scad`
+  * added `all.scad` convenience header, that pulls in all the modules at once
 
 
 ## v2.5.0
