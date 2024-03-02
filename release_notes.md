@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* increased resolution for all print modes but 'speed', where resolution is down to `0.2`
 * updating TPU `seal` with extra settings to avoid artifacts
 * renamed TPU `solid` mode as `seal`
 * when printing in `vase` mode, slowdown happens only when <5s layer time
