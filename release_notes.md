@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `side_rounded_cube()` to `rounded_cube.scad`
 
 
 ## v2.5.0
