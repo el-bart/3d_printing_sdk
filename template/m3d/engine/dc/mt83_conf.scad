@@ -1,4 +1,5 @@
-// MT83 engine: 12V, on side
+// MT83 engine: 12V
+// position: shaft pointing up
 engine_dc_mt83_d = 32;
 engine_dc_mt83_len = 19.7;
 engine_dc_mt83_shaft_d = 2;
