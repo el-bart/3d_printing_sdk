@@ -1,7 +1,6 @@
 // MT83 DC motor
 // 12V
-// 0.15A when idling
-// 0.2A
+// 2.0A max
 include<mt83_conf.scad>
 include<../../math.scad>
 use<../../fn.scad>
