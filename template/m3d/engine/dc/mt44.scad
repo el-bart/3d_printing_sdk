@@ -13,7 +13,7 @@ module engine_dc_mt44_crosssection_2d()
   B = [Q, 0];
   C = [Q-q, h];
   Dx = ( pow(C.x,2) + pow(C.y, 2) - pow(B.x, 2) - pow(B.y, 2) ) / ( 2*(C.x - B.x) );
-  echo(Dx);
+  assert(Dx>0);
   R = Q + Dx;
 
   intersection()
