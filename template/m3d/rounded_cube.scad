@@ -5,11 +5,17 @@ module rounded_cube(size, corner_r)
   assert( is[1] > 0 );
   assert( is[2] > 0 );
 
-  // NOTE: while minkowski() could be used here, with actual cube inside
-  // dimensions are more accurate, avoid strange artifacts. this is especially
-  // important for low values of $fn.
+  minkowski()
+  {
+    translate(corner_r*[1,1,1])
+      cube(is);
+    sphere(corner_r);
+  }
 
-  // center crosses for side wall
+  // NOTE: while minkowski() alone gives the mathematically right shape here!
+  // however with actual cubes inside dimensions are far more accurate, as it
+  // avoids strange artifacts (eg. height off by 0.02). this is especially
+  // important for low values of $fn.
   union()
   {
     // OX
@@ -21,34 +27,6 @@ module rounded_cube(size, corner_r)
     // OZ
     translate([corner_r, corner_r, 0])
       cube([is.x, is.y, size.z]);
-  }
-  // roundings around the edges
-  translate(corner_r*[1,1,1])
-  {
-    // corners
-    for(dx=[0, is.x])
-      for(dy=[0, is.y])
-        for(dz=[0, is.z])
-          translate([dx, dy, dz])
-            sphere(corner_r);
-    // OX edges
-    for(dy=[0, is.y])
-      for(dz=[0, is.z])
-        translate([0, dy, dz])
-          rotate([0, 90, 0])
-            cylinder(r=corner_r, h=is.x);
-    // OY edges
-    for(dx=[0, is.x])
-      for(dz=[0, is.z])
-        translate([dx, 0, dz])
-          rotate([-90, 0, 0])
-            cylinder(r=corner_r, h=is.y);
-    // OZ edges
-    for(dx=[0, is.x])
-      for(dy=[0, is.y])
-        translate([dx, dy, 0])
-          rotate([0, 0, 0])
-            cylinder(r=corner_r, h=is.z);
   }
 }
 
@@ -69,7 +47,7 @@ if(true)
   $fn=30;
   size=[40, 30, 20];
   rounded_cube(size, 5);
-//  %cube(size);
+  %cube(size);
 }
 
 // example #2
