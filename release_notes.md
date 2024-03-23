@@ -1,13 +1,14 @@
 # release notes
 
 ## dev
-* `m3d` new functionalities:
+* `m3d` new functionalities and improvements:
   * added `side_rounded_cube()` to `rounded_cube.scad`
   * added `all.scad` convenience header, that pulls in all the modules at once
   * added `math.scad` with some useful math constants (`pi`, `e` and `eps`(ilon))
   * added DC engines:
     * `engine/dc/mt83` - mock and dimensions of MT83
     * `engine/dc/mt44` - mock and dimensions of MT44
+  * `side_rounded_cube()` and `rounded_cube()` are now more precise, when low values of `$fn`
 
 
 ## v2.5.0
