@@ -10,3 +10,4 @@
 * `cube_center(size, axis)` - cube that's centered, but only along selected axis
 * add local config overrides (per: printer, filament, mode)
 * PrusaSlicer 2.7 should have [scarf joint seams](https://www.youtube.com/watch?v=vl0FT339jfc) - can be great for wateproof and precise prints
+* improve diagnostics on invalid variables (eg. pet-g vs. petg filament name)
