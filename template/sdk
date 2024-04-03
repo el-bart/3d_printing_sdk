@@ -11,7 +11,7 @@ else
 fi
 image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]' '[:lower:]')_sdk"
 
-docker build -t "$image" "$app_dir/sdk/"
+docker build -t "$image" "$app_dir/docker/"
 
 extra_flags=()
 if tty -s
