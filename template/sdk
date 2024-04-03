@@ -31,4 +31,4 @@ docker run \
   -v "$app_dir:/mnt" \
   -w "/mnt" \
   "$image" \
-  make "$@"
+  "$@"
