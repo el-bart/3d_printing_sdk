@@ -15,6 +15,12 @@ shift 1
 mkdir -p "$out_dir"
 out_dir=$(readlink -e "$out_dir")
 
+# remove old SDK dir, if present
+if [ -f "$out_dir/sdk/merge_ini" ]
+then
+  rm -rf "$out_dir/sdk"
+fi
+
 cd "$app_dir/template"
 cp -rv \
   .gitignore \
