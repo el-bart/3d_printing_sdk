@@ -74,6 +74,8 @@ toxic fumes.
 
 * alternative to ABS - very similar properties
 * UV resistant
+* softening temperature: ~95 C
+* density: 1.07g/cm^3
 
 
 ## PC
