@@ -11,3 +11,5 @@
 * add local config overrides (per: printer, filament, mode)
 * PrusaSlicer 2.7 should have [scarf joint seams](https://www.youtube.com/watch?v=vl0FT339jfc) - can be great for wateproof and precise prints
 * improve diagnostics on invalid variables (eg. pet-g vs. petg filament name)
+* move filament outside of a specific printer (note: will need overrides)
+* move mode outside of a specific printer (note: will need overrides)
