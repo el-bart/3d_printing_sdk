@@ -21,6 +21,14 @@ RUN cd /opt && \
     ln -s Prusa* prusa-slicer && \
     ln -s /opt/prusa-slicer/bin/prusa-slicer /usr/local/bin/
 
+# make it possible to use GUI in docker
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    locales && \
+    sed -i -e 's|^# \(en_US.UTF-8 UTF-8\)|\1|' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
+
 # install gcoder
 RUN apt-get update && apt-get install -y --no-install-recommends \
     printrun-common \

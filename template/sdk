@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
 app_dir=$(dirname "$(readlink -e "$0")")
+app=$(basename "$0")
 if git status > /dev/null 2>&1
 then
   vcs_root=$(git rev-parse --show-toplevel 2>/dev/null | xargs dirname)
@@ -13,22 +14,52 @@ image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]'
 
 docker build -t "$image" "$app_dir/docker/"
 
-extra_flags=()
+flags=()
 if tty -s
 then
-  extra_flags+=("-it")
+  flags+=("-it")
 fi
 
 if [ -n "${vcs_hash:-}" ]
 then
-  extra_flags+=(--env "VCS_HASH=$vcs_hash")
+  flags+=(--env "VCS_HASH=$vcs_hash")
+fi
+
+flags+=(--rm)
+flags+=(--user "$(id -u):$(id -g)")
+flags+=(--volume "$app_dir:/mnt")
+flags+=(--workdir "/mnt")
+
+if [ -n "${SDK_3D_ENABLE_GUI:-}" ]
+then
+  if [ -z "${DISPLAY:-}" ]
+  then
+    echo "$app: DISPLAY is not available" >&2
+    exit 2
+  fi
+  echo "$app: enabling X11 display"
+
+  flags+=(--env DISPLAY)
+  flags+=(--env QT_X11_NO_MITSHM=1)
+  for path in \
+    "/tmp/.X11-unix" \
+    "/run/user/$(id -u)/at-spi/bus_0"
+  do
+    if [ -e "$path" ]
+    then
+      flags+=(--volume "$path:$path:ro")
+    fi
+  done
+
+  # proper home dir is needed for prusa-slicer to work in GUI mode
+  user_dir=$app_dir/home
+  mkdir -p "$user_dir"
+  echo '*' > "$user_dir/.gitignore"
+  flags+=(--volume "$user_dir:/home/user")
+  flags+=(--env HOME="/home/user")
 fi
 
 docker run \
-  "${extra_flags[@]}" \
-  --rm \
-  -u "$(id -u):$(id -g)" \
-  -v "$app_dir:/mnt" \
-  -w "/mnt" \
+  "${flags[@]}" \
   "$image" \
   "$@"

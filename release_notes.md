@@ -2,6 +2,7 @@
 
 ## dev
 * added `./sdk` script to allow easy running commands and interactive shells inside the SDK container
+* added `./sdk_gui` script to be able to run X11 apps from within SDK (eg. `prusa-slicer` in graphical mode)
 * `m3d` new functionalities and improvements:
   * added `side_rounded_cube()` to `rounded_cube.scad`
   * added `all.scad` convenience header, that pulls in all the modules at once
