@@ -66,16 +66,18 @@ just use one of these as your print `MODE` and you're good to go.
 don't.
 toxic fumes.
 
-* resisting around 110[C] after printing
-* becomes brittle under long UV light exposure
-
 
 ## ASA
 
+* 1kg of ASA is 388.5m of 1.75mm filament, i.e.:
+  - 1m is 2.57g
+  - 1l is 1.07kg
+* resisting around 110[C] after printing
+* becomes brittle under long UV light exposure
 * alternative to ABS - very similar properties
 * UV resistant
-* softening temperature: ~95 C
-* density: 1.07g/cm^3
+* softening temperature: ~95[C]
+* density: 1.07[g/cm^3]
 
 
 ## PC
