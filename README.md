@@ -174,6 +174,17 @@ but for their own printer.
 this way everyone can use the same source files to build for different printers.
 
 
+### running interactively
+
+in order to run SDK interactively from command line just run `./sdk` without arguments.
+
+there is also an option to run GUI applications (eg. `prusa-slicer`) from SDK, via `./sdk_gui`.
+that this will forward X11 settings to the container.
+it will also `home/` directory locally, so that your settings are preserved between runs.
+note that this `home/` dir is _not_ present in `./sdk` runs, to minimize impact of local configs on automated (reproducible) builds.
+
+
+
 ## contributing
 
 you're more than welcome to contribute. :)
