@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* imporved `speed` mode significantly, for small objects (at the expense of squality)
 * added `./sdk` script to allow easy running commands and interactive shells inside the SDK container
 * added `./sdk_gui` script to be able to run X11 apps from within SDK (eg. `prusa-slicer` in graphical mode)
 * `m3d` new functionalities and improvements:
