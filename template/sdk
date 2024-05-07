@@ -54,7 +54,6 @@ then
   # proper home dir is needed for prusa-slicer to work in GUI mode
   user_dir=$app_dir/home
   mkdir -p "$user_dir"
-  echo '*' > "$user_dir/.gitignore"
   flags+=(--volume "$user_dir:/home/user")
   flags+=(--env HOME="/home/user")
 fi
