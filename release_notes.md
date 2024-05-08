@@ -5,6 +5,7 @@
   * `hollow`
   * `precise`
   * `speed`
+  * `strength`
   * `vase`
 * imporved `speed` mode significantly, for small objects (at the expense of squality)
 * added `./sdk` script to allow easy running commands and interactive shells inside the SDK container
