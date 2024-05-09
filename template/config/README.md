@@ -78,6 +78,11 @@ toxic fumes.
 * UV resistant
 * softening temperature: ~95[C]
 * density: 1.07[g/cm^3]
+* poorly sticks to the glass - thermo-adhesive is needed
+* VERY nice finish of the parts
+* non-stringy
+* can be glues with CA glues
+* better alternative to ABS
 
 
 ## PC
