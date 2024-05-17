@@ -19,6 +19,7 @@ just use one of these as your print `MODE` and you're good to go.
 * keep 1st layer squashed against bed (my OZ is -16.80mm)
 * clean mirror with IPA (99%)
 * keep temperature VERY stable (no windows / AC units) to avoid warping
+* hard to sand
 
 
 ## PET-G
@@ -32,6 +33,7 @@ just use one of these as your print `MODE` and you're good to go.
 * use a mixture of water with a drop of dish washing soap to "paint" the glass surface (minimizes PET-G stickiness to the reasonable value)
 * if parts of the print remain on bed use acetone to dissolve and clean these off
 * [PET-G chemical resistance datasheet](http://kmac-plastics.net/data/chemical/petg-chemical.htm)
+* can be sanded
 * absorbs moisture from the air, that breaks print quality and strength - address:
   - dry in oven in 50-60[C] when unpacked (even new one!) for a couple of hours
   - keep in a moisture-absorbing box at all times (also during printing)
@@ -65,6 +67,8 @@ just use one of these as your print `MODE` and you're good to go.
 
 don't.
 toxic fumes.
+not-resistant to UV.
+can resist temperatures of over 100[C].
 
 
 ## ASA
@@ -72,17 +76,25 @@ toxic fumes.
 * 1kg of ASA is 388.5m of 1.75mm filament, i.e.:
   - 1m is 2.57g
   - 1l is 1.07kg
-* resisting around 110[C] after printing
-* becomes brittle under long UV light exposure
-* alternative to ABS - very similar properties
-* UV resistant
-* softening temperature: ~95[C]
 * density: 1.07[g/cm^3]
-* poorly sticks to the glass - thermo-adhesive is needed
+* becomes brittle under long UV light exposure
+* alternative to ABS (very similar properties, fumes are less toxic)
+* UV resistant
+* softening temperature: ~95-105[C] (depending on brand)
 * VERY nice finish of the parts
 * non-stringy
 * can be glues with CA glues
-* better alternative to ABS
+* solvable in acetone (same as ABS)
+* can be acetone-smoothed
+* can be sanded
+* slightly absorbs moisture - keep in dry compartments
+* printing:
+  * should be printed with enclosure
+  * no cooling fans!
+  * hard to stick to the glass (even with a ton of thermo-adhesives)
+  * print with brims or raft
+  * ASA+acetone slurry is said to help, but i cannot confirm
+
 
 
 ## PC
