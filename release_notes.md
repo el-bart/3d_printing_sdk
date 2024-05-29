@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* `spped` mode print time is decreased by over 1/3
 * added ASA filament type with extra print modes:
   * `hollow`
   * `precise`
