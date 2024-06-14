@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.6.0
 * additional `speed` improvements and fine-funnings for PLA and PET-G
 * `spped` mode print time is decreased by over 1/3
 * added ASA filament type with extra print modes:
