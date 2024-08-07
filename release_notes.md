@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* `image_sdk` -> `image_3dsdk` to make the name easier to search
 
 
 ## v2.6.0

@@ -10,7 +10,7 @@ else
   vcs_root=$(dirname "$app_dir")
   vcs_hash="N/A"
 fi
-image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]' '[:lower:]')_sdk"
+image="$(sed "s%^$vcs_root/%%" <<< "$app_dir" | tr '/.\- &' '_' | tr '[:upper:]' '[:lower:]')_3dsdk"
 
 docker build -t "$image" "$app_dir/docker/"
 
