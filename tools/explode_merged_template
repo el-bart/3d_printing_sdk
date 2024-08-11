@@ -98,7 +98,7 @@ with open( os.path.join(path_cfg_dir_dst, 'filament', filament, 'filament.ini'),
         f.write(f"{k} = {v}\n")
 
 # create leftovers file
-with open( os.path.join(path_cfg_dir_dst, f'__NEW_THINGS_{filament}__.ini'), 'w' ) as f:
+with open( os.path.join(path_cfg_dir_dst, f'__UNMATCHED_ENTRIES_{filament}__.ini'), 'w' ) as f:
     while True:
         line = psrc.extract_head()
         if line == None:
