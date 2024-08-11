@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `tools/explode_merged_template` to speed up covnerting merged profiles from slicer, to split elements
 * `image_sdk` -> `image_3dsdk` to make the name easier to search
 
 
