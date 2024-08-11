@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+# splits one config.ini into printer/filament, based on a given reference template.
+# additionally leaves out things that could have not been matched.
+#
+# yes - it's horribly inefficient, but works just fine for the "problem size". :P
+
+import os
+import re
+import sys
+
+
+def is_comment(line):
+    return re.match('^ *#', line)
+
+def is_key_value(line):
+    return re.match('^[a-z0-9_]+ *= *', line)
+
+def key_value(line):
+    res = re.search('^([a-z0-9_]+) *= *(.*)', line)
+    assert res != None
+    return res[1], res[2]
+
+def mkdir(path):
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+class Profile:
+    def __init__(self, path = None):
+        self.__lines = []
+        if path != None:
+            with open(path) as f:
+                for line in f:
+                    line = line.strip('\n\r');
+                    self.__lines.append(line)
+
+    def extract_head(self):
+        if len(self.__lines) == 0:
+            return None
+        line = self.__lines[0]
+        self.__lines = self.__lines[1:]
+        return line
+
+    def extract_value_of(self, key):
+        for line in self.__lines:
+            if is_key_value(line):
+                k,v = key_value(line)
+                if k == key:
+                    self.__lines.remove(line)
+                    return v
+        return None
+
+
+if len(sys.argv) != 1 + 4:
+    sys.stderr.write(f"{sys.argv[0]} <config.ini> <type> <reference/template/dir> <output/dir>\n")
+    sys.stderr.write("where type is: asa, petg, pla, silk, tpu\n")
+    sys.exit(2)
+path_cfg_in = sys.argv[1]
+filament = sys.argv[2]
+path_cfg_dir_ref = sys.argv[3]
+path_cfg_dir_dst = sys.argv[4]
+
+psrc = Profile(path_cfg_in)
+pref_printer = Profile( os.path.join(path_cfg_dir_ref, 'printer.ini') )
+pref_filament = Profile( os.path.join(path_cfg_dir_ref, 'filament', filament, 'filament.ini') )
+
+# create printer file
+mkdir(path_cfg_dir_dst)
+with open( os.path.join(path_cfg_dir_dst, 'printer.ini'), 'w' ) as f:
+    while True:
+        line = pref_printer.extract_head()
+        if line == None:
+            break
+        if not is_key_value(line):
+            f.write(f"{line}\n")
+            continue
+        k,v = key_value(line)
+        v = psrc.extract_value_of(k)
+        if v == None:
+            sys.stderr.write(f"{sys.argv[0]}: printer's key '{k}' is NOT present in input file - skipping\n")
+            continue
+        f.write(f"{k} = {v}\n")
+
+# create filament file
+mkdir( os.path.join(path_cfg_dir_dst, 'filament', filament) )
+with open( os.path.join(path_cfg_dir_dst, 'filament', filament, 'filament.ini'), 'w' ) as f:
+    while True:
+        line = pref_filament.extract_head()
+        if line == None:
+            break
+        if not is_key_value(line):
+            f.write(f"{line}\n")
+            continue
+        k,v = key_value(line)
+        v = psrc.extract_value_of(k)
+        if v == None:
+            sys.stderr.write(f"{sys.argv[0]}: filament's key '{k}' is NOT present in input file - skipping\n")
+            continue
+        f.write(f"{k} = {v}\n")
+
+# create leftovers file
+with open( os.path.join(path_cfg_dir_dst, f'__NEW_THINGS_{filament}__.ini'), 'w' ) as f:
+    while True:
+        line = psrc.extract_head()
+        if line == None:
+            break
+        f.write(f"{line}\n")
