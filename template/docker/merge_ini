@@ -20,7 +20,7 @@ def parse_line(line):
         return None, None
     if len(line)>0 and line[0] == '#':
         return None, None
-    r = re.search("^([a-z_]+) *= *(.*)$", line)
+    r = re.search("^([a-z0-9_]+) *= *(.*)$", line)
     if not r:
         raise Exception("parse_line(): parse error on line:\n{}".format(line))
     return r.group(1), r.group(2)
