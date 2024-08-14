@@ -4,6 +4,7 @@
 * updated PrusaSlicer to v2.8.0
 * Voron 2.4 with E3D Revo hotend support (`voron_24_revo`)
   * PLA (none, precise, hollow, vase)
+  * PET-G (none, hollow, vase)
 * added `tools/explode_merged_template` to speed up covnerting merged profiles from slicer, to split elements
 * `image_sdk` -> `image_3dsdk` to make the name easier to search
 
