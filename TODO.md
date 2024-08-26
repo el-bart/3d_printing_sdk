@@ -13,3 +13,4 @@
 * improve diagnostics on invalid variables (eg. pet-g vs. petg filament name)
 * move filament outside of a specific printer (note: will need overrides)
 * move mode outside of a specific printer, but inside filament still (note: will need overrides)
+* replace g-coder with PrusaSlicer's estimates (faster and more reliable)
