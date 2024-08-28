@@ -92,11 +92,15 @@ build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.gcode: \
 			"$<" \
 			> "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
-# 'gcoder' is a part of 'printrun' package (http://www.pronterface.com) / apt install printrun
-# note that script is not executable, so you may want to have a wrapper script to run it
 %.time: %.gcode
 	$(SILENT)echo "TIME $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE))"
-	$(SILENT)gcoder "$<" > "$@" 2>&1 || { cat "$@" ; rm -f "$@" ; exit 2 ; }
+	$(SILENT)grep \
+			-e '^; filament used ' \
+			-e '^; filament cost ' \
+			-e '^; estimated .*printing time ' \
+			"$<" \
+			| sed 's/^; //' \
+			> "$@"
 
 include $(wildcard build/*.d)
 
@@ -105,7 +109,7 @@ endif
 
 .PHONY: time
 time: $(TARGETS)
-	$(SILENT)find build/ -type f -name '*.time' -exec tail -n 1 {} +
+	$(SILENT)find build/ -type f -name '*.time' -exec grep '^estimated printing time ' {} +
 
 .PHONY: clean
 clean:
