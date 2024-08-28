@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added support for `*.3mf` files
 * updated PrusaSlicer to v2.8.0
 * Voron 2.4 with E3D Revo hotend support (`voron_24_revo`)
   * PLA (none, precise, hollow, strength, waterproof, vase)
