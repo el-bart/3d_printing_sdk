@@ -1,3 +1,5 @@
+// threaded inserts from CNC Kitchen's store:
+// https://cnckitchen.store
 use <../fn.scad>
 
 // M3 x 3.0
