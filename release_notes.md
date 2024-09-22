@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `threaded_inserts/cnc_kitchen.scad` with slots templates, for common sizes
 * `nema17_stepper.scad` is now under `engine/stepper/nema17.scad`
 * added `pressure_advance` mode for filaments, to calibrate pressure advance in [klipper](https://klipper3d.org)
 * using `prusa-slicer` instead of `gcoder` for estimating print time (it's faster and more precise)
