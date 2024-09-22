@@ -1,4 +1,4 @@
-use <fn.scad>
+use <../../fn.scad>
 
 eps = 0.01;
 

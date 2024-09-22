@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* `nema17_stepper.scad` is now under `engine/stepper/nema17.scad`
 * added `pressure_advance` mode for filaments, to calibrate pressure advance in [klipper](https://klipper3d.org)
 * using `prusa-slicer` instead of `gcoder` for estimating print time (it's faster and more precise)
 * added support for `*.3mf` files
