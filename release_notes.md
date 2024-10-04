@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.7.0
 * `cooling = 1` is now always enabled, to make sure print time obay small elements limitations
 * removed skirts from the print - relying on `PRIME_LINE` macro to prime the nozzle instead
 * added `threaded_inserts/cnc_kitchen.scad` with slots templates, for common sizes
