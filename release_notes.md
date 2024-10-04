@@ -8,7 +8,7 @@
 * added `pressure_advance` mode for filaments, to calibrate pressure advance in [klipper](https://klipper3d.org)
 * using `prusa-slicer` instead of `gcoder` for estimating print time (it's faster and more precise)
 * added support for `*.3mf` files
-* updated PrusaSlicer to v2.8.0
+* updated PrusaSlicer to v2.8.1
 * Voron 2.4 with E3D Revo hotend support (`voron_24_revo`)
   * PLA (none, precise, hollow, strength, waterproof, vase)
   * PET-G (none, precise, hollow, strength, waterproof, vase)
