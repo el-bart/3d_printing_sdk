@@ -1,7 +1,7 @@
 # release notes
 
 ## dev
-
+* `voron_24_revo` now supports TPU (40D)
 
 ## v2.7.0
 * `cooling = 1` is now always enabled, to make sure print time obay small elements limitations
