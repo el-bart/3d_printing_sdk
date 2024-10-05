@@ -45,13 +45,13 @@ just use one of these as your print `MODE` and you're good to go.
   - 1m is 2.98g
   - 1l is 1.241kg
 * very hygroscopic - dry well before usage
-* printing slow is the key!
-* sticks all too well to PEI sheets
+* printing slow is the key! (2mm^3/s for 40D)
+* sticks all too well to PEI sheets (use glue stick / magigoo as a release agent)
 * stringy
 * be careful with retraction settings (may clog extruder, especially if it's open-end style)
 * use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
 * use a mixture of water with a drop of dish washing soap to "paint" the glass surface for larger objects
-* after printing mirror can be printed with acetone
+* after printing mirror can be cleaned with acetone
 
 
 ## Silk
