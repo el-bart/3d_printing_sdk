@@ -52,6 +52,7 @@ just use one of these as your print `MODE` and you're good to go.
 * use a bit of adhesives (eg.: Dimafix) when printing small elements on glass/mirror (larger objects may all stick too well!)
 * use a mixture of water with a drop of dish washing soap to "paint" the glass surface for larger objects
 * after printing mirror can be cleaned with acetone
+* crank up extruder's spring, to make sure TPU actually holds properly
 
 
 ## Silk
