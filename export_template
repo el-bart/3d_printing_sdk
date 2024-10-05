@@ -46,3 +46,14 @@ else
       grep -q "^$opt" "project.config" || grep "^$opt" "config/template/project.config" | tee -a "project.config"
     done
 fi
+
+# TPU has been renamed to TPU40D
+for printer in anycubic_chiron voron_24_revo
+do
+  dir="config/printer/$printer/filament"
+  if [ -d "$dir/tpu" ]
+  then
+    rm -rf "$dir/tpu"
+    sed -i 's/^FILAMENT=tpu$/FILAMENT=tpu40d/' *.config
+  fi
+done
