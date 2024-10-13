@@ -1,7 +1,9 @@
 # release notes
 
 ## dev
-* `voron_24_revo` now supports TPU (40D)
+* `voron_24_revo` now supports:
+  * TPU (40D)
+  * silk
 
 
 ## v2.7.0
