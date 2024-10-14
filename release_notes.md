@@ -2,8 +2,9 @@
 
 ## dev
 * `voron_24_revo` now supports:
-  * TPU (40D)
-  * silk
+  * `tpu40d`
+  * `tpu55d`
+  * `silk`
 
 
 ## v2.7.0
