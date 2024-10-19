@@ -2,8 +2,7 @@
 
 ## dev
 * `voron_24_revo` now supports:
-  * `tpu40d`
-  * `tpu55d`
+  * `tpu40d` (replaces less accurate `tpu` name)
   * `silk`
 
 
