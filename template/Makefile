@@ -109,7 +109,7 @@ endif
 
 .PHONY: time
 time: $(TARGETS)
-	$(SILENT)find build/ -type f -name '*.time' -exec grep '^estimated printing time ' {} +
+	$(SILENT)find build/ -type f -name '*.time' -exec grep -H '^estimated printing time ' {} + | sort
 
 .PHONY: clean
 clean:

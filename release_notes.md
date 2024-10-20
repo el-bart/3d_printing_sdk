@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+* showing print times now:
+  * always output file name
+  * displays names in sorted order
 * `voron_24_revo` now supports:
   * `tpu40d` (replaces less accurate `tpu` name)
   * `silk`
