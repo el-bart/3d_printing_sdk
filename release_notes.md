@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added Wayland GUI forwarding support (perliminary)
 * showing print times now:
   * always output file name
   * displays names in sorted order
