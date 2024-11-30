@@ -1,6 +1,10 @@
 # release notes
 
 ## dev
+* tuned profiles for:
+  * PLA
+    * `waterproof`
+    * `strength`
 * added Wayland GUI forwarding support (perliminary)
 * showing print times now:
   * always output file name
