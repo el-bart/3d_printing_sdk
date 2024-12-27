@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* added `SCALE` floating point parameter to `*.config` files, to scale output gcode easily
 * tuned profiles for:
   * PLA
     * `waterproof`

@@ -22,6 +22,7 @@ $(TARGETS): Makefile
 		FILAMENT=$(shell   if [ -n "$(FILAMENT)"   ]; then echo "$(FILAMENT)"   ;else grep -h "^FILAMENT="   project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		MODE=$(shell       if [ -n "$(MODE)"       ]; then echo "$(MODE)"       ;else grep -h "^MODE="       project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		COPIES=$(shell     if [ -n "$(COPIES)"     ]; then echo "$(COPIES)"     ;else grep -h "^COPIES="     project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
+		SCALE=$(shell      if [ -n "$(SCALE)"      ]; then echo "$(SCALE)"      ;else grep -h "^SCALE="      project.config "$@.config" 2>/dev/null | tail -1 | sed 's/^[A-Z0-9_]*=//' ;fi) \
 		CUSTOM_PROJECT_INI=$(shell [ -f "project.ini" ] && echo "project.ini" ) \
 		CUSTOM_FILE_INI=$(shell    [ -f "$@.ini"      ] && echo "$@.ini"      ) \
 		CUSTOM_CONFIG=$(shell [ -f "$@.config" ] && echo "$@.config") \
@@ -83,12 +84,13 @@ build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.gcode: \
 		project.config \
 		$(CUSTOM_CONFIG) \
 		Makefile
-	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE), N=$(COPIES))"
+	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE), N=$(COPIES), scale=$(SCALE))"
 	$(SILENT)prusa-slicer \
 			--load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" \
 			--export-gcode \
 			--output "$@" \
 			--duplicate "$(COPIES)" \
+			--scale "$(SCALE)" \
 			"$<" \
 			> "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
