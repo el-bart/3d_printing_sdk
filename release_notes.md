@@ -2,10 +2,12 @@
 
 ## dev
 * added `SCALE` floating point parameter to `*.config` files, to scale output gcode easily
-* tuned profiles for:
+* tuned profiles for `voron_24_revo` for:
   * PLA
     * `waterproof`
     * `strength`
+  * PET-G
+    * `transparent`
 * added Wayland GUI forwarding support (perliminary)
 * showing print times now:
   * always output file name
