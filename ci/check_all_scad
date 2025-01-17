@@ -1,0 +1,21 @@
+#!/bin/bash
+set -eu -o pipefail
+
+app=$(basename "$0")
+app_dir=$(dirname "$(readlink -e "$0")")
+cd "$app_dir/../template/m3d/"
+
+{
+  find * -name '*.scad' \
+    | sort \
+    | grep -v '^all.scad$' \
+    | grep -v '^math.scad$' \
+    | sed 's#\(.*\)#use <\1>#'
+  echo 'include <math.scad>'
+} > "all.scad"
+
+if ! git diff --exit-code .
+then
+  echo "$app: content of all.scad has changed" >&2
+  exit 3
+fi
