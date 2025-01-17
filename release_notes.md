@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+* `m3d/all.scad`:
+  * now contains all the M3D files
+  * file is now meant to be `include`d not `use`d
 * added `SCALE` floating point parameter to `*.config` files, to scale output gcode easily
 * tuned profiles for `voron_24_revo` for:
   * PLA
