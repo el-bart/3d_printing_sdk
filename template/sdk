@@ -69,6 +69,10 @@ then
   mkdir -p "$user_dir"
   flags+=(--volume "$user_dir:/home/user")
   flags+=(--env HOME="/home/user")
+
+  flags+=(--network=host)
+else
+  flags+=(--network=none)
 fi
 
 docker run \

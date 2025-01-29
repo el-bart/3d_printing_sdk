@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* fixed starting GUI of latest `prusa-slicer` under docker
 * generating STLs are binary not ASCII now
 * `m3d/all.scad`:
   * now contains all the M3D files
