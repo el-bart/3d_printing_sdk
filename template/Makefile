@@ -38,6 +38,7 @@ SCAD_FLAGS+=-D VCS_HASH=\"$(VCS_HASH)\"
 SCAD_FLAGS+=--hardwarnings
 SCAD_FLAGS+=--check-parameters true
 SCAD_FLAGS+=--check-parameter-ranges true
+SCAD_FLAGS+=--export-format binstl
 
 build/%.proxy: \
 		build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.time \

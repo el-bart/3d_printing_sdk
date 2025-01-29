@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* generating STLs are binary not ASCII now
 * `m3d/all.scad`:
   * now contains all the M3D files
   * file is now meant to be `include`d not `use`d
