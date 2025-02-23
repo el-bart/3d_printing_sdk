@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* always starting print with external perimeter, to increase quality of the 1st layer (i.e. start slowly)
 * fixed starting GUI of latest `prusa-slicer` under docker
 * generating STLs are binary not ASCII now
 * `m3d/all.scad`:
