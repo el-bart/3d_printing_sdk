@@ -43,7 +43,7 @@ then
     echo "$app: enabling X11 display"
     flags+=(--env DISPLAY)
     flags+=(--env QT_X11_NO_MITSHM=1)
-    flags+=(--volume "/tmp/.X11-unix")
+    flags+=(--volume "/tmp/.X11-unix:/tmp/.X11-unix:ro")
   fi
 
   if [ -n "${WAYLAND_DISPLAY:-}" ]
