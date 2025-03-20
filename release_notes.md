@@ -1,6 +1,10 @@
 # release notes
 
 ## dev
+* minimum print speed set to:
+  * 70mm/s for speed prints
+  * 40mm/s for most filaments
+  * 20mm/s for quality prints
 * enabled `infill_anchor` by default
 * always starting print with external perimeter, to increase quality of the 1st layer (i.e. start slowly)
 * fixed starting GUI of latest `prusa-slicer` under docker
