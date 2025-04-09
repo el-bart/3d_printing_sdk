@@ -19,6 +19,7 @@
     * `strength`
   * PET-G
     * `transparent`
+    * `voron_pif`
 * added Wayland GUI forwarding support (perliminary)
 * showing print times now:
   * always output file name
