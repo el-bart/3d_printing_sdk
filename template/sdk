@@ -19,6 +19,7 @@ if tty -s
 then
   flags+=("-it")
 fi
+flags+=("--init")
 
 if [ -n "${vcs_hash:-}" ]
 then
