@@ -27,6 +27,16 @@
 * `voron_24_revo` now supports:
   * `tpu40d` (replaces less accurate `tpu` name)
   * `silk`
+* added `voron_24_mmp` - Voron 2.4 with Magnum Mosquito Plus hotend
+* `voron_24_mmp` now supports:
+  * PEG-G:
+    * `none`
+    * `waterproof`
+    * `speed`
+    * `hollow`
+    * `voron_pif`
+  * PLA:
+    * `none`
 
 
 ## v2.7.0
