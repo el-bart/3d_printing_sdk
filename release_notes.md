@@ -1,6 +1,8 @@
 # release notes
 
 ## dev
+* upgrade to use PrusaSlicer 2.9.2
+* docker image upgraded to debian:13
 * minimum print speed set to:
   * 70mm/s for speed prints
   * 40mm/s for most filaments
