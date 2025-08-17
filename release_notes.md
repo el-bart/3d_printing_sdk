@@ -7,6 +7,7 @@
 * `voron_24_mmp_orb2` now supports:
   * PLA:
     * `none`
+    * `speed`
 * docker image upgraded to debian:13
 * using scarf seams by default now in most profiles
 * minimum print speed set to:
