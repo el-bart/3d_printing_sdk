@@ -2,6 +2,11 @@
 
 ## dev
 * upgrade to use PrusaSlicer 2.9.2
+* added `voron_24_mmp_orb2` - Voron 2.4 with Magnum Mosquito Plus hotend and Orbiter v2.0 extruder
+* `voron_24_mmp_orb2`is not the default profile
+* `voron_24_mmp_orb2` now supports:
+  * PLA:
+    * `none`
 * docker image upgraded to debian:13
 * using scarf seams by default now in most profiles
 * minimum print speed set to:
