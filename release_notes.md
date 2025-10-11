@@ -6,9 +6,55 @@
 * added `voron_24_mmp_orb2` - Voron 2.4 with Magnum Mosquito Plus hotend and Orbiter v2.0 extruder
 * `voron_24_mmp_orb2`is not the default profile
 * `voron_24_mmp_orb2` now supports:
-  * PLA:
+  * ASA:
+    * `draft`
+    * `hollow`
     * `none`
+    * `precise`
+    * `pressure_advanc`
     * `speed`
+    * `speedboatrace`
+    * `strength`
+    * `vase`
+    * `voron_pif`
+    * `waterproof`
+  * PET-G:
+    * `draft`
+    * `hollow`
+    * `none`
+    * `precise`
+    * `pressure_advance`
+    * `speed`
+    * `speedboatrace`
+    * `strength`
+    * `transparent`
+    * `vase`
+    * `voron_pif`
+    * `waterproof`
+  * PLA:
+    * `draft`
+    * `hollow`
+    * `none`
+    * `precise`
+    * `pressure_advance`
+    * `speed`
+    * `speedboatrace`
+    * `strength`
+    * `vase`
+    * `waterproof`
+  * silk:
+    * `draft`
+    * `hollow`
+    * `none`
+    * `precise`
+    * `speed`
+    * `vase`
+  * TPU 40D:
+    * `hollow`
+    * `none`
+    * `precise`
+    * `seal`
+    * `vase`
 * docker image upgraded to debian:13
 * using scarf seams by default now in most profiles
 * minimum print speed set to:
