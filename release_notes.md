@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.8.0
 * upgrade to use PrusaSlicer 2.9.2
 * added `speedboatrace` profile, following [speedboat race rules](https://all3dp.com/2/3d-printing-speed-speedboat-race-3dbenchy/)
 * added `voron_24_mmp_orb2` - Voron 2.4 with Magnum Mosquito Plus hotend and Orbiter v2.0 extruder
