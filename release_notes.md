@@ -56,6 +56,7 @@
     * `seal`
     * `vase`
 * docker image upgraded to debian:13
+* added new filament mode `draft` - a balance between `speed` and `none` (i.e. default), that use more bulky sizes without trying to be crazy about speed
 * using scarf seams by default now in most profiles
 * minimum print speed set to:
   * 70mm/s for speed prints
