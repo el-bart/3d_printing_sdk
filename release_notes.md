@@ -1,6 +1,7 @@
 # release notes
 
 ## dev
+* adjusted 1st layer speed to 50% (from 80%), for better adhesion
 
 
 ## v2.8.0
