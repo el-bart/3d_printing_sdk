@@ -2,6 +2,12 @@
 
 ## dev
 * adjusted 1st layer speed to 50% (from 80%), for better adhesion
+* `voron_24_mmp_orb2` now supports:
+  * TPU 40D:
+    * `speed`
+    * other modes were tuned
+* fixed filaments names in profiles (for readability)
+* refined speed for TPU 40D across multiple modes
 
 
 ## v2.8.0
