@@ -8,7 +8,7 @@
     * other modes were tuned
 * fixed filaments names in profiles (for readability)
 * refined speed for TPU 40D across multiple modes
-* fixed temperatures for `silk`
+* adjusted temperatures and speeds for `silk`
 
 
 ## v2.8.0
