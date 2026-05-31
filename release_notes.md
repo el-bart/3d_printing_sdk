@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+* added config options:
+  * `ROTATE_XYZ` (defaults to `0;0;0`), to perform model rotation beflore slicing
+  * `SPLIT_BY_OBJECT` (default to `false`) to detect disjoint objects and consider them separate
 * adjusted 1st layer speed to 50% (from 80%), for better adhesion
 * `voron_24_mmp_orb2` now supports:
   * TPU 40D:
@@ -119,7 +122,7 @@
 * Voron 2.4 with E3D Revo hotend support (`voron_24_revo`)
   * PLA (none, precise, hollow, strength, waterproof, vase)
   * PET-G (none, precise, hollow, strength, waterproof, vase)
-  * ASA (none, precise, hollow, strength, waterproof, vase, voron_pif)
+  * ASA (none, precise, hollow, strength, waterproof, vase, voron\_pif)
 * added `tools/explode_merged_template` to speed up covnerting merged profiles from slicer, to split elements
 * `image_sdk` -> `image_3dsdk` to make the name easier to search
 
