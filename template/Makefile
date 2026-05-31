@@ -87,17 +87,17 @@ build/$(PRINTER_3D)/$(FILAMENT)/$(MODE)/%.gcode: \
 		project.config \
 		$(CUSTOM_CONFIG) \
 		Makefile
-	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE), N=$(COPIES), scale=$(SCALE), rot=$(ROTATE_XYZ), split=$(SPLIT_BY_OBJECT)"
+	$(SILENT)echo "SLICE $(notdir $<) ($(PRINTER_3D)/$(FILAMENT)/$(MODE), N=$(COPIES), scale=$(SCALE), rot=[$(ROTATE_XYZ)], split=$(SPLIT_BY_OBJECT)"
 	$(SILENT)prusa-slicer \
 			--load "$$(echo "$@" | sed 's/\.gcode$$/.ini/')" \
 			--export-gcode \
 			--output "$@" \
 			--duplicate "$(COPIES)" \
 			--scale "$(SCALE)" \
-			--rotate-x "$$( echo "$(ROTATE_XYZ)" | tr ';' ' ' | awk '{ print $$1 }' )" \
-			--rotate-y "$$( echo "$(ROTATE_XYZ)" | tr ';' ' ' | awk '{ print $$2 }' )" \
-			--rotate   "$$( echo "$(ROTATE_XYZ)" | tr ';' ' ' | awk '{ print $$3 }' )" \
-			$$( [ "$(SPLIT_BY_OBJECT)" = "true" ] && echo -- --split || true ) \
+			--rotate-x "$(word 1, $(subst ;, ,$(ROTATE_XYZ)) )" \
+			--rotate-y "$(word 2, $(subst ;, ,$(ROTATE_XYZ)) )" \
+			--rotate   "$(word 3, $(subst ;, ,$(ROTATE_XYZ)) )" \
+			$(if $(filter true,$(SPLIT_BY_OBJECT)),--split,) \
 			"$<" \
 			> "$@.log" 2>&1 || { cat "$@.log" ; exit 2 ; }
 
