@@ -8,6 +8,7 @@
 * `voron_24_mmp_orb2` now supports:
   * TPU 40D:
     * `speed`
+    * `solid` (i.e. fully infilled, but not as strict as for making it strong and waterproof)
     * other modes were tuned
 * fixed filaments names in profiles (for readability)
 * refined speed for TPU 40D across multiple modes
