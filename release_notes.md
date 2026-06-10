@@ -13,6 +13,7 @@
 * fixed filaments names in profiles (for readability)
 * refined speed for TPU 40D across multiple modes
 * adjusted temperatures and speeds for `silk`
+* limited image name to ASCII set
 
 
 ## v2.8.0
