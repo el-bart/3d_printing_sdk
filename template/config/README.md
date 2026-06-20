@@ -69,6 +69,7 @@ just use one of these as your print `MODE` and you're good to go.
 don't.
 toxic fumes.
 not-resistant to UV.
+warping heavily.
 can resist temperatures of over 100[C].
 
 
