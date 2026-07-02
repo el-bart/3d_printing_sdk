@@ -14,6 +14,7 @@
 * refined speed for TPU 40D across multiple modes
 * adjusted temperatures and speeds for `silk`
 * limited image name to ASCII set
+* added M2.5x4 threaded insert slot
 
 
 ## v2.8.0

@@ -11,6 +11,14 @@ module ti_cnck_m2(dl=0, dd=0.15)
 }
 
 
+// M2.5 x 4.0
+module ti_cnck_m2_5(dl=0, dd=0.15)
+{
+  translate([0, 0, -5.0-dl])
+    cylinder(d=4.0+dd, h=5.0+dl, $fn=fn(20));
+}
+
+
 // M3 x 3.0
 module ti_cnck_m3_short(dl=0, dd=0.15)
 {
@@ -75,7 +83,11 @@ module ti_cnck_m8(dl=0, dd=0.15)
 
 
 // M2 preview
-ti_cnck_m2();
+translate([0, -1*8, 0])
+  ti_cnck_m2();
+
+// M2.5 preview
+ti_cnck_m2_5();
 
 // M3 preview
 translate([0, 1*8, 0])
