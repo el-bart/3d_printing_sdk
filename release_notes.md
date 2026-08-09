@@ -3,6 +3,7 @@
 ## dev
 * `m3d` changes:
   * introduced `math/triangles.scad` file with `equilateral_triangle()`
+  * added `centering.scad` with `center()` and `center_xy()` helpers
 * added config options:
   * `ROTATE_XYZ` (defaults to `0;0;0`), to perform model rotation beflore slicing
   * `SPLIT_BY_OBJECT` (default to `false`) to detect disjoint objects and consider them separate
