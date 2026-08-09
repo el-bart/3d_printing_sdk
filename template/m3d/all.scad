@@ -6,6 +6,7 @@ use <engine/stepper/nema17.scad>
 use <fn.scad>
 use <inner_shell.scad>
 use <map.scad>
+use <math/triangles.scad>
 use <outer_shell.scad>
 use <rounded_cube.scad>
 use <screw_head_hex.scad>
