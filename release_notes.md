@@ -1,6 +1,9 @@
 # release notes
 
 ## dev
+
+
+## v2.9.0
 * added `bambu` mode, that prints more like bambulab does - i.e. underextrudes _a lot_ (this makes it easier to print ready to go models deisgned for those printers)
 * `m3d` changes:
   * introduced `math/triangles.scad` file with `equilateral_triangle()`
